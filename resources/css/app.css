@@ -170,3 +170,12 @@
         @apply bg-background text-foreground;
     }
 }
+
+.svg-auto-size svg:not([class*='size-']) {
+    width: calc(var(--spacing) * 4);
+    height: calc(var(--spacing) * 4);
+}
+
+.svg-auto-color svg:not([class*='text-']) {
+    color: var(--muted-foreground);
+}
