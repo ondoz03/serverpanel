@@ -20,11 +20,11 @@ import type { NavItem } from '@/types';
 const mainNavItems: NavItem[] = [
     { title: 'Dashboard', href: dashboard(), icon: LayoutGrid },
     { title: 'Servers', href: '/servers', icon: ServerIcon },
-    { title: 'Web Apps', href: '#', icon: AppWindow },
-    { title: 'Databases', href: '#', icon: Database },
-    { title: 'Firewall', href: '#', icon: Shield },
-    { title: 'Cron Jobs', href: '#', icon: Timer },
-    { title: 'Backups', href: '#', icon: ScrollText },
+    { title: 'Web Apps', href: '/web-apps', icon: AppWindow },
+    { title: 'Databases', href: '/databases', icon: Database },
+    { title: 'Firewall', href: '/firewall', icon: Shield },
+    { title: 'Cron Jobs', href: '/cron-jobs', icon: Timer },
+    { title: 'Backups', href: '/backups', icon: ScrollText },
 ];
 
 const footerNavItems: NavItem[] = [
