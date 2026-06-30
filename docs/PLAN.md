@@ -34,32 +34,33 @@
 
 ---
 
-## Phase 3: Frontend — Web Apps & SSL
+## Phase 3: Frontend — Web Apps & SSL ✅
 
-- [ ] **3.1** Web App Index / Create / Show / Settings
-- [ ] **3.2** SSL Management (Let's Encrypt, Custom SSL, status badges)
-- [ ] **3.3** Environment Variables Editor
-- [ ] **3.4** Git Deployment (connect repo, deploy button, history)
-- [ ] **3.5** Deployment Log (live streaming output)
-
----
-
-## Phase 4: Frontend — Database, Firewall, Cron, Backup
-
-- [ ] **4.1** Database Index / Create
-- [ ] **4.2** Firewall Rules (list, add, delete rules)
-- [ ] **4.3** Cron Job Manager (list, add, expression builder)
-- [ ] **4.4** Backup Manager (list, trigger, restore)
+- [x] **3.1** Web App Index / Create / Show / Settings
+- [x] **3.2** SSL Management (Let's Encrypt, Custom SSL, status badges)
+- [x] **3.3** Environment Variables Editor
+- [x] **3.4** Git Deployment (connect repo, deploy button, history)
+- [x] **3.5** Deployment Log (live streaming output with TerminalOutput component)
 
 ---
 
-## Phase 5: Frontend — Reusable Components
+## Phase 4: Frontend — Database, Firewall, Cron, Backup ✅
 
-- [ ] **5.1** UI Components (StatusBadge, CopyButton, TerminalOutput, CronExpressionBuilder)
-- [ ] **5.2** Server Components (ServerCard, MetricsChart, ServiceStatus, ProvisioningLog)
-- [ ] **5.3** WebApp Components (DeploymentLog, EnvEditor)
-- [ ] **5.4** Composables (useServerMetrics, useDeploymentStream, useClipboard, useConfirm)
-- [ ] **5.5** Pinia Stores (server, webApp, notification)
+- [x] **4.1** Database Index / Create
+- [x] **4.2** Firewall Rules (list, add, delete rules)
+- [x] **4.3** Cron Job Manager (list, add, expression builder)
+- [x] **4.4** Backup Manager (list, trigger, restore)
+
+---
+
+## Phase 5: Frontend — Reusable Components ✅
+
+- [x] **5.1** UI Components (StatusBadge, CopyButton, TerminalOutput, CronExpressionBuilder)
+- [x] **5.2** Server Components (ServerCard, MetricsChart, ServiceStatus)
+- [x] **5.3** WebApp Components (DeploymentLog, EnvEditor)
+- [x] **5.4** Composables (useClipboard, useConfirm)
+- [x] **5.5** Pinia Stores (server, webApp, notification)
+- [x] **5.6** Missing shadcn-vue primitives (table, tabs, switch)
 
 ---
 
