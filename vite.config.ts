@@ -31,4 +31,22 @@ export default defineConfig({
             formVariants: true,
         }),
     ],
+    build: {
+        chunkSizeWarningLimit: 1000,
+        rolldownOptions: {
+            onLog(_level, log) {
+                if (log?.code === 'INVALID_ANNOTATION') return;
+            },
+            output: {
+                codeSplitting: true,
+                manualChunks(id: string) {
+                    if (id.includes('node_modules')) {
+                        if (id.includes('reka-ui') || id.includes('@vueuse/core')) return 'vendor-ui';
+                        if (id.includes('@lucide')) return 'icons';
+                        return 'vendor';
+                    }
+                },
+            },
+        },
+    },
 });
