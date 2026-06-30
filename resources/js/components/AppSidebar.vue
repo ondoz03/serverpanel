@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Link } from '@inertiajs/vue3';
-import { BookOpen, FolderGit2, LayoutGrid } from '@lucide/vue';
+import { AppWindow, Database, LayoutGrid, ScrollText, Server as ServerIcon, Shield, Timer } from '@lucide/vue';
 import AppLogo from '@/components/AppLogo.vue';
 import NavFooter from '@/components/NavFooter.vue';
 import NavMain from '@/components/NavMain.vue';
@@ -18,23 +18,20 @@ import { dashboard } from '@/routes';
 import type { NavItem } from '@/types';
 
 const mainNavItems: NavItem[] = [
-    {
-        title: 'Dashboard',
-        href: dashboard(),
-        icon: LayoutGrid,
-    },
+    { title: 'Dashboard', href: dashboard(), icon: LayoutGrid },
+    { title: 'Servers', href: '/servers', icon: ServerIcon },
+    { title: 'Web Apps', href: '#', icon: AppWindow },
+    { title: 'Databases', href: '#', icon: Database },
+    { title: 'Firewall', href: '#', icon: Shield },
+    { title: 'Cron Jobs', href: '#', icon: Timer },
+    { title: 'Backups', href: '#', icon: ScrollText },
 ];
 
 const footerNavItems: NavItem[] = [
     {
-        title: 'Repository',
-        href: 'https://github.com/laravel/vue-starter-kit',
-        icon: FolderGit2,
-    },
-    {
         title: 'Documentation',
         href: 'https://laravel.com/docs/starter-kits#vue',
-        icon: BookOpen,
+        icon: null as unknown as NavItem['icon'],
     },
 ];
 </script>
