@@ -100,7 +100,7 @@ Diferensiasi utama dari RunCloud (kompetitor global):
   - Nginx (latest stable)
   - PHP 8.2 / 8.3 / 8.4 (multi-version)
   - MySQL 8.0 / MariaDB 10.11
-  - Redis 7
+  - Redis 7 (opsional, fallback file/sync untuk dev)
   - Composer 2
   - Node.js 20/22/24 (via nvm)
 - Status provisioning real-time via SSE/WebSocket

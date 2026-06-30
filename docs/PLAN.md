@@ -1,6 +1,6 @@
 # ServerPanel — Implementation Plan
 
-**Stack:** Laravel 13 · Vue 3 · Inertia.js · Node.js 24 · MySQL 8.0 · Redis 7
+**Stack:** Laravel 13 · Vue 3 · Inertia.js · Node.js 24 · MySQL 8.0
 **Approach:** Frontend-first (bikin UI dulu dengan dummy data, kemudian backend)
 
 ---
@@ -9,7 +9,7 @@
 
 - [x] **0.1** Install Laravel 13 + Vue Starter Kit (Inertia 3, Vue 3, shadcn-vue, Tailwind CSS v4)
 - [x] **0.2** Setup database MySQL & konfigurasi `.env`
-- [x] **0.3** Setup Redis untuk cache/queue/session
+- [x] **0.3** Setup Redis (opsional, diganti file/sync untuk dev)
 - [x] **0.4** Setup Vite, Tailwind CSS 4, konfirmasi dev server jalan
 
 ---
