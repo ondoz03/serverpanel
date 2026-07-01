@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Head, Link } from '@inertiajs/vue3';
-import { ArrowLeft, Check, ChevronRight, Copy, Key, Lock, Monitor, Terminal } from '@lucide/vue';
+import { Head, Link, router } from '@inertiajs/vue3';
+import { AlertCircle, ArrowLeft, Check, ChevronRight, Copy, Globe, Key, Lock, Monitor, Server as ServerIcon, Terminal } from '@lucide/vue';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -9,7 +9,7 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Separator } from '@/components/ui/separator';
 import servers from '@/routes/servers';
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 
 defineOptions({
     layout: {
@@ -23,6 +23,7 @@ defineOptions({
 const step = ref(1);
 const connecting = ref(false);
 const connected = ref(false);
+const error = ref('');
 
 type AuthMethod = 'password' | 'key';
 const authMethod = ref<AuthMethod>('key');
@@ -35,12 +36,28 @@ const form = ref({
     ssh_user: 'root',
     ssh_password: '',
     ssh_key: '',
+    provider: 'custom',
+    datacenter: '',
     os: '',
+    php_version: '8.3',
 });
 
 const installScript = ref("curl -fsSL https://agent.serverpanel.id/install.sh | bash -s -- --token=sp_live_xxxxxxxxxx --endpoint=https://api.serverpanel.id");
 
+const errors = ref<Record<string, string>>({});
+
+function validateStep1(): boolean {
+    errors.value = {};
+    if (!form.value.name.trim()) errors.value.name = 'Server name is required';
+    if (!form.value.ip_address.trim()) errors.value.ip_address = 'IP address is required';
+    else if (!/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/.test(form.value.ip_address)) errors.value.ip_address = 'Invalid IP address format';
+    if (!form.value.ssh_port || form.value.ssh_port < 1 || form.value.ssh_port > 65535) errors.value.ssh_port = 'Port must be 1-65535';
+    return Object.keys(errors.value).length === 0;
+}
+
 function testConnection() {
+    error.value = '';
+    if (!validateStep1()) return;
     connecting.value = true;
     setTimeout(() => {
         connecting.value = false;
@@ -49,11 +66,16 @@ function testConnection() {
 }
 
 function nextStep() {
+    if (step.value === 1 && !validateStep1()) return;
     step.value++;
 }
 
 function prevStep() {
     step.value--;
+}
+
+function startProvisioning() {
+    router.post('/servers', form.value);
 }
 
 async function copyScript() {
@@ -63,6 +85,10 @@ async function copyScript() {
         // fallback
     }
 }
+
+const osDetected = computed(() => {
+    return form.value.os || 'Not detected yet';
+});
 </script>
 
 <template>
@@ -111,20 +137,52 @@ async function copyScript() {
                 <div class="space-y-2">
                     <Label for="name">Server Name</Label>
                     <Input id="name" v-model="form.name" placeholder="e.g. Production-01" />
+                    <p v-if="errors.name" class="flex items-center gap-1 text-xs text-red-500">
+                        <AlertCircle class="h-3 w-3" /> {{ errors.name }}
+                    </p>
                 </div>
                 <div class="grid gap-4 sm:grid-cols-3">
                     <div class="space-y-2 sm:col-span-2">
                         <Label for="ip">IP Address</Label>
                         <Input id="ip" v-model="form.ip_address" placeholder="e.g. 152.42.12.84" />
+                        <p v-if="errors.ip_address" class="flex items-center gap-1 text-xs text-red-500">
+                            <AlertCircle class="h-3 w-3" /> {{ errors.ip_address }}
+                        </p>
                     </div>
                     <div class="space-y-2">
                         <Label for="port">SSH Port</Label>
                         <Input id="port" v-model.number="form.ssh_port" type="number" />
+                        <p v-if="errors.ssh_port" class="flex items-center gap-1 text-xs text-red-500">
+                            <AlertCircle class="h-3 w-3" /> {{ errors.ssh_port }}
+                        </p>
                     </div>
                 </div>
                 <div class="space-y-2">
                     <Label for="user">SSH User</Label>
                     <Input id="user" v-model="form.ssh_user" placeholder="root" />
+                </div>
+                <div class="grid gap-4 sm:grid-cols-2">
+                    <div class="space-y-2">
+                        <Label for="provider">Provider</Label>
+                        <Select v-model="form.provider">
+                            <SelectTrigger>
+                                <SelectValue placeholder="Select provider" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectItem value="custom">Custom</SelectItem>
+                                <SelectItem value="vultr">Vultr</SelectItem>
+                                <SelectItem value="digitalocean">DigitalOcean</SelectItem>
+                                <SelectItem value="hetzner">Hetzner</SelectItem>
+                                <SelectItem value="linode">Linode</SelectItem>
+                                <SelectItem value="upcloud">UpCloud</SelectItem>
+                                <SelectItem value="idcloudhost">IDCloudHost</SelectItem>
+                            </SelectContent>
+                        </Select>
+                    </div>
+                    <div class="space-y-2">
+                        <Label for="datacenter">Datacenter</Label>
+                        <Input id="datacenter" v-model="form.datacenter" placeholder="e.g. SGP1, FSN1" />
+                    </div>
                 </div>
                 <Separator />
                 <div class="space-y-2">
@@ -254,11 +312,17 @@ async function copyScript() {
                     <Label>Quick Install</Label>
                     <div class="grid gap-3 sm:grid-cols-2">
                         <div class="cursor-pointer rounded-lg border border-primary bg-primary/5 p-4">
-                            <div class="text-sm font-medium">LEMP Stack</div>
-                            <div class="text-xs text-muted-foreground">Nginx + PHP 8.x + MySQL/MariaDB + Redis</div>
+                            <div class="flex items-center gap-2">
+                                <ServerIcon class="h-4 w-4 text-primary" />
+                                <div class="text-sm font-medium">LEMP Stack</div>
+                            </div>
+                            <div class="text-xs text-muted-foreground">Nginx + PHP {{ form.php_version }} + MySQL/MariaDB + Redis</div>
                         </div>
                         <div class="cursor-pointer rounded-lg border p-4 hover:bg-muted">
-                            <div class="text-sm font-medium">Custom</div>
+                            <div class="flex items-center gap-2">
+                                <Globe class="h-4 w-4" />
+                                <div class="text-sm font-medium">Custom</div>
+                            </div>
                             <div class="text-xs text-muted-foreground">Choose individual components</div>
                         </div>
                     </div>
@@ -266,18 +330,24 @@ async function copyScript() {
 
                 <Separator />
 
-                <div class="space-y-2">
-                    <Label>PHP Version</Label>
-                    <Select>
-                        <SelectTrigger>
-                            <SelectValue placeholder="Select PHP version" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectItem value="8.4">PHP 8.4</SelectItem>
-                            <SelectItem value="8.3">PHP 8.3</SelectItem>
-                            <SelectItem value="8.2">PHP 8.2</SelectItem>
-                        </SelectContent>
-                    </Select>
+                <div class="grid gap-4 sm:grid-cols-2">
+                    <div class="space-y-2">
+                        <Label>PHP Version</Label>
+                        <Select v-model="form.php_version">
+                            <SelectTrigger>
+                                <SelectValue />
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectItem value="8.4">PHP 8.4</SelectItem>
+                                <SelectItem value="8.3">PHP 8.3</SelectItem>
+                                <SelectItem value="8.2">PHP 8.2</SelectItem>
+                            </SelectContent>
+                        </Select>
+                    </div>
+                    <div class="space-y-2">
+                        <Label>Detected OS</Label>
+                        <Input :value="osDetected" disabled />
+                    </div>
                 </div>
 
                 <div class="rounded-lg border bg-blue-50 p-3 text-sm text-blue-800 dark:bg-blue-950 dark:text-blue-200">
@@ -296,7 +366,7 @@ async function copyScript() {
                 Continue
                 <ChevronRight class="ml-2 h-4 w-4" />
             </Button>
-            <Button v-else>
+            <Button v-else @click="startProvisioning">
                 Start Provisioning
             </Button>
         </div>

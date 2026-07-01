@@ -14,13 +14,12 @@ defineOptions({
     layout: {
         breadcrumbs: [
             { title: 'Servers', href: servers.index() },
-            { title: 'Production-01', href: '/servers/prod-1' },
             { title: 'Settings', href: '#' },
         ],
     },
 });
 
-defineProps<{
+const props = defineProps<{
     server: Server;
 }>();
 </script>
@@ -31,7 +30,7 @@ defineProps<{
     <div class="flex flex-col gap-6 p-4">
         <div class="flex items-center gap-4">
             <Button variant="ghost" size="icon" as-child>
-                <Link :href="`/servers/${server.id}`">
+                <Link :href="servers.show(server.id)">
                     <ArrowLeft class="h-4 w-4" />
                 </Link>
             </Button>

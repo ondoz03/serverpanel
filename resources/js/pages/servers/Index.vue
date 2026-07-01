@@ -85,7 +85,7 @@ function usageColor(percent: number): string {
                                 </div>
                                 <div>
                                     <CardTitle class="text-base">
-                                        <Link :href="`/servers/${server.id}`" class="hover:underline">
+                                        <Link :href="servers.show(server.id)" class="hover:underline">
                                             {{ server.name }}
                                         </Link>
                                     </CardTitle>

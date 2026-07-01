@@ -12,13 +12,12 @@ defineOptions({
     layout: {
         breadcrumbs: [
             { title: 'Servers', href: servers.index() },
-            { title: 'Staging-01', href: '/servers/staging-1' },
             { title: 'Provisioning', href: '#' },
         ],
     },
 });
 
-defineProps<{
+const props = defineProps<{
     server: Server;
 }>();
 
@@ -104,7 +103,7 @@ onMounted(() => {
     <div class="flex flex-col gap-6 p-4">
         <div class="flex items-center gap-4">
             <Button variant="ghost" size="icon" as-child>
-                <Link :href="`/servers/${server.id}`">
+                <Link :href="servers.show(server.id)">
                     <ArrowLeft class="h-4 w-4" />
                 </Link>
             </Button>
@@ -221,7 +220,7 @@ onMounted(() => {
                     <p class="font-medium">Server is ready!</p>
                     <p class="mt-1 text-xs">Your server has been provisioned. You can now add web applications, databases, and configure services.</p>
                     <Button size="sm" class="mt-3" as-child>
-                        <Link :href="`/servers/${server.id}`">
+                        <Link :href="servers.show(server.id)">
                             Go to Server
                         </Link>
                     </Button>
