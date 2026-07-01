@@ -15,16 +15,22 @@ import {
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
 import { dashboard } from '@/routes';
+import servers from '@/routes/servers';
+import webApps from '@/routes/web-apps';
+import databases from '@/routes/databases';
+import firewall from '@/routes/firewall';
+import cronJobs from '@/routes/cron-jobs';
+import backups from '@/routes/backups';
 import type { NavItem } from '@/types';
 
 const mainNavItems: NavItem[] = [
     { title: 'Dashboard', href: dashboard(), icon: LayoutGrid },
-    { title: 'Servers', href: '/servers', icon: ServerIcon },
-    { title: 'Web Apps', href: '/web-apps', icon: AppWindow },
-    { title: 'Databases', href: '/databases', icon: Database },
-    { title: 'Firewall', href: '/firewall', icon: Shield },
-    { title: 'Cron Jobs', href: '/cron-jobs', icon: Timer },
-    { title: 'Backups', href: '/backups', icon: ScrollText },
+    { title: 'Servers', href: servers.index(), icon: ServerIcon },
+    { title: 'Web Apps', href: webApps.index(), icon: AppWindow },
+    { title: 'Databases', href: databases.index(), icon: Database },
+    { title: 'Firewall', href: firewall.index(), icon: Shield },
+    { title: 'Cron Jobs', href: cronJobs.index(), icon: Timer },
+    { title: 'Backups', href: backups.index(), icon: ScrollText },
 ];
 
 const footerNavItems: NavItem[] = [

@@ -1,11 +1,15 @@
 <script setup lang="ts">
-import { Head, Link } from '@inertiajs/vue3';
-import { Activity, AppWindow, ArrowLeft, Database, HardDrive, MemoryStick, Play, RefreshCw, ScrollText, Server as ServerIcon, Shield, Terminal, Timer } from '@lucide/vue';
+import { Head, Link, router } from '@inertiajs/vue3';
+import { Activity, AppWindow, ArrowLeft, Database, HardDrive, MemoryStick, Play, RefreshCw, ScrollText, Server as ServerIcon, Shield, Terminal, Timer, RotateCw } from '@lucide/vue';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import servers from '@/routes/servers';
+import webApps from '@/routes/web-apps';
+import databases from '@/routes/databases';
+import firewall from '@/routes/firewall';
+import cronJobs from '@/routes/cron-jobs';
 import type { Server } from '@/types';
 
 defineOptions({
@@ -18,12 +22,7 @@ defineOptions({
 });
 
 const props = defineProps<{
-    server: Server & {
-        web_apps_count: number;
-        databases_count: number;
-        firewall_rules_count: number;
-        cron_jobs_count: number;
-    };
+    server: Server;
 }>();
 
 function formatBytes(bytes: number): string {
@@ -91,7 +90,7 @@ function serviceVariant(status: string): string {
 
         <div class="flex flex-wrap gap-2">
             <Button size="sm" variant="outline" as-child>
-                <Link :href="`/servers/${server.id}/monitoring`">
+                <Link :href="servers.monitoring(server.id)">
                     <Activity class="mr-2 h-4 w-4" />
                     Monitoring
                 </Link>
@@ -189,12 +188,12 @@ function serviceVariant(status: string): string {
                                         <div class="text-xs text-muted-foreground">v{{ svc.version }}</div>
                                     </div>
                                 </div>
-                                <div class="flex items-center gap-2">
-                                    <Badge :variant="serviceVariant(svc.status)">{{ svc.status }}</Badge>
-                                    <Button size="sm" variant="ghost">
-                                        <RefreshCw class="h-3 w-3" />
-                                    </Button>
-                                </div>
+                                    <div class="flex items-center gap-2">
+                                        <Badge :variant="serviceVariant(svc.status)">{{ svc.status }}</Badge>
+                                        <Button size="sm" variant="ghost" @click="router.post(`/servers/${server.id}/services/${svc.name}/restart`)">
+                                            <RotateCw class="h-3 w-3" />
+                                        </Button>
+                                    </div>
                             </div>
                         </div>
                     </CardContent>
@@ -208,25 +207,25 @@ function serviceVariant(status: string): string {
                     </CardHeader>
                     <CardContent class="space-y-2">
                         <Button variant="outline" class="w-full justify-start" as-child>
-                            <Link :href="'#'">
+                            <Link :href="webApps.index()">
                                 <AppWindow class="mr-2 h-4 w-4" />
                                 Web Apps ({{ server.web_apps_count }})
                             </Link>
                         </Button>
                         <Button variant="outline" class="w-full justify-start" as-child>
-                            <Link :href="'#'">
+                            <Link :href="databases.index()">
                                 <Database class="mr-2 h-4 w-4" />
                                 Databases ({{ server.databases_count }})
                             </Link>
                         </Button>
                         <Button variant="outline" class="w-full justify-start" as-child>
-                            <Link :href="'#'">
+                            <Link :href="firewall.index()">
                                 <Shield class="mr-2 h-4 w-4" />
                                 Firewall ({{ server.firewall_rules_count }})
                             </Link>
                         </Button>
                         <Button variant="outline" class="w-full justify-start" as-child>
-                            <Link :href="'#'">
+                            <Link :href="cronJobs.index()">
                                 <Timer class="mr-2 h-4 w-4" />
                                 Cron Jobs ({{ server.cron_jobs_count }})
                             </Link>

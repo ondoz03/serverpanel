@@ -14,8 +14,11 @@ export type Server = {
     id: string;
     name: string;
     ip_address: string;
+    ssh_port: number;
+    ssh_user: string;
     hostname: string;
     os: ServerOs;
+    arch: string;
     status: ServerStatus;
     agent_version: string;
     agent_last_seen: string;
@@ -27,6 +30,11 @@ export type Server = {
     memory_total: number;
     disk_used: number;
     disk_total: number;
+    load_avg: [number, number, number];
     services: ServerService[];
     uptime: number;
+    web_apps_count: number;
+    databases_count: number;
+    firewall_rules_count: number;
+    cron_jobs_count: number;
 };
