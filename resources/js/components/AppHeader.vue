@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Link, usePage } from '@inertiajs/vue3';
-import { BookOpen, Folder, LayoutGrid, Menu, Search } from '@lucide/vue';
+import { AppWindow, BookOpen, Database, Folder, LayoutGrid, Menu, ScrollText, Search, Server as ServerIcon, Shield, Timer } from '@lucide/vue';
 import { computed } from 'vue';
 import AppLogo from '@/components/AppLogo.vue';
 import AppLogoIcon from '@/components/AppLogoIcon.vue';
@@ -16,7 +16,6 @@ import {
     NavigationMenu,
     NavigationMenuItem,
     NavigationMenuList,
-    navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu';
 import {
     Sheet,
@@ -36,6 +35,12 @@ import { useCurrentUrl } from '@/composables/useCurrentUrl';
 import { getInitials } from '@/composables/useInitials';
 import { toUrl } from '@/lib/utils';
 import { dashboard } from '@/routes';
+import servers from '@/routes/servers';
+import webApps from '@/routes/web-apps';
+import databases from '@/routes/databases';
+import firewall from '@/routes/firewall';
+import cronJobs from '@/routes/cron-jobs';
+import backups from '@/routes/backups';
 import type { BreadcrumbItem, NavItem } from '@/types';
 
 type Props = {
@@ -50,15 +55,14 @@ const page = usePage();
 const auth = computed(() => page.props.auth);
 const { isCurrentUrl, whenCurrentUrl } = useCurrentUrl();
 
-const activeItemStyles =
-    'text-neutral-900 dark:bg-neutral-800 dark:text-neutral-100';
-
 const mainNavItems: NavItem[] = [
-    {
-        title: 'Dashboard',
-        href: dashboard(),
-        icon: LayoutGrid,
-    },
+    { title: 'Dashboard', href: dashboard(), icon: LayoutGrid },
+    { title: 'Servers', href: servers.index(), icon: ServerIcon },
+    { title: 'Web Apps', href: webApps.index(), icon: AppWindow },
+    { title: 'Databases', href: databases.index(), icon: Database },
+    { title: 'Firewall', href: firewall.index(), icon: Shield },
+    { title: 'Cron Jobs', href: cronJobs.index(), icon: Timer },
+    { title: 'Backups', href: backups.index(), icon: ScrollText },
 ];
 
 const rightNavItems: NavItem[] = [
@@ -78,7 +82,7 @@ const rightNavItems: NavItem[] = [
 <template>
     <div>
         <div class="border-b border-sidebar-border/80">
-            <div class="mx-auto flex h-16 items-center px-4 md:max-w-7xl">
+            <div class="flex h-16 items-center px-4">
                 <!-- Mobile Menu -->
                 <div class="lg:hidden">
                     <Sheet>
@@ -108,11 +112,11 @@ const rightNavItems: NavItem[] = [
                                         v-for="item in mainNavItems"
                                         :key="item.title"
                                         :href="item.href"
-                                        class="flex items-center gap-x-3 rounded-lg px-3 py-2 text-sm font-medium hover:bg-accent"
+                                        class="flex items-center gap-x-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-500 dark:text-neutral-400"
                                         :class="
                                             whenCurrentUrl(
                                                 item.href,
-                                                activeItemStyles,
+                                                'text-neutral-900 dark:text-neutral-100',
                                             )
                                         "
                                     >
@@ -150,43 +154,6 @@ const rightNavItems: NavItem[] = [
                     <AppLogo />
                 </Link>
 
-                <!-- Desktop Menu -->
-                <div class="hidden h-full lg:flex lg:flex-1">
-                    <NavigationMenu class="ml-10 flex h-full items-stretch">
-                        <NavigationMenuList
-                            class="flex h-full items-stretch space-x-2"
-                        >
-                            <NavigationMenuItem
-                                v-for="(item, index) in mainNavItems"
-                                :key="index"
-                                class="relative flex h-full items-center"
-                            >
-                                <Link
-                                    :class="[
-                                        navigationMenuTriggerStyle(),
-                                        whenCurrentUrl(
-                                            item.href,
-                                            activeItemStyles,
-                                        ),
-                                        'h-9 cursor-pointer px-3',
-                                    ]"
-                                    :href="item.href"
-                                >
-                                    <component
-                                        v-if="item.icon"
-                                        :is="item.icon"
-                                        class="mr-2 h-4 w-4"
-                                    />
-                                    {{ item.title }}
-                                </Link>
-                                <div
-                                    v-if="isCurrentUrl(item.href)"
-                                    class="absolute bottom-0 left-0 h-0.5 w-full translate-y-px bg-black dark:bg-white"
-                                ></div>
-                            </NavigationMenuItem>
-                        </NavigationMenuList>
-                    </NavigationMenu>
-                </div>
 
                 <div class="ml-auto flex items-center space-x-2">
                     <div class="relative flex items-center space-x-1">
@@ -266,6 +233,49 @@ const rightNavItems: NavItem[] = [
                         </DropdownMenuContent>
                     </DropdownMenu>
                 </div>
+            </div>
+        </div>
+
+        <div class="border-b border-sidebar-border/80">
+            <div class="flex h-16 items-center px-4 md:max-w-7xl">
+ 
+                <!-- Desktop Menu -->
+                <div class="hidden h-full lg:flex lg:flex-1">
+                    <NavigationMenu class="flex h-full items-stretch">
+                        <NavigationMenuList
+                            class="flex h-full items-stretch space-x-2"
+                        >
+                            <NavigationMenuItem
+                                v-for="(item, index) in mainNavItems"
+                                :key="index"
+                                class="relative flex h-full items-center"
+                            >
+                                <Link
+                                    :class="[
+                                        'inline-flex h-9 w-max items-center justify-center rounded-md px-3 py-2 text-sm font-medium text-neutral-500 transition-colors dark:text-neutral-400',
+                                        whenCurrentUrl(
+                                            item.href,
+                                            'text-neutral-900 dark:text-neutral-100',
+                                        ),
+                                    ]"
+                                    :href="item.href"
+                                >
+                                    <component
+                                        v-if="item.icon"
+                                        :is="item.icon"
+                                        class="mr-2 h-4 w-4"
+                                    />
+                                    {{ item.title }}
+                                </Link>
+                                <div
+                                    v-if="isCurrentUrl(item.href)"
+                                    class="absolute bottom-0 left-0 h-0.5 w-full translate-y-px bg-black dark:bg-white"
+                                ></div>
+                            </NavigationMenuItem>
+                        </NavigationMenuList>
+                    </NavigationMenu>
+                </div>
+
             </div>
         </div>
 
