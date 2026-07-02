@@ -11,3 +11,8 @@
 *.log
 .DS_Store
 Thumbs.db
+
+# Graphify
+.agents
+/graphify-out/
+.graphifyignore

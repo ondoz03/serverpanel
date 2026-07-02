@@ -1,6 +1,13 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
-import type { WebApp } from '@/types';
+
+interface WebApp {
+    id: string;
+    name: string;
+    framework: string;
+    domain: string;
+    status: string;
+}
 
 interface WebAppState {
     apps: WebApp[];
@@ -43,7 +50,7 @@ export const useWebAppStore = defineStore('webApp', () => {
 
     async function fetchApp(id: string): Promise<void> {
         loading.value = true;
-        const found = apps.value.find((a) => a.id === id);
+        const found = apps.value.find((a: WebApp) => a.id === id);
         currentApp.value = found ?? null;
         loading.value = false;
     }
