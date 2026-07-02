@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref, onMounted } from 'vue';
 import { Head, Link } from '@inertiajs/vue3';
 import { AppWindow, Globe, Lock, Plus, Server as ServerIcon } from '@lucide/vue';
 import { Badge } from '@/components/ui/badge';
@@ -6,7 +7,23 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import type { WebApplication } from '@/types';
 
-defineProps<{ apps: WebApplication[] }>();
+const props = defineProps<{ apps: WebApplication[] }>();
+
+const allApps = ref<WebApplication[]>([...props.apps]);
+
+onMounted(() => {
+    try {
+        const local = localStorage.getItem('local_webapps');
+        if (local) {
+            const parsed = JSON.parse(local) as WebApplication[];
+            const existingIds = new Set(props.apps.map(a => String(a.id)));
+            const filteredLocal = parsed.filter(a => !existingIds.has(String(a.id)));
+            allApps.value = [...props.apps, ...filteredLocal];
+        }
+    } catch (e) {
+        console.error('Failed to load local webapps', e);
+    }
+});
 
 defineOptions({
     layout: {
@@ -14,12 +31,12 @@ defineOptions({
     },
 });
 
-function statusVariant(s: string) {
-    switch (s) { case 'active': return 'success' as const; case 'error': return 'destructive' as const; default: return 'secondary' as const; }
+function statusVariant(s: string): 'default' | 'destructive' | 'secondary' {
+    switch (s) { case 'active': return 'default'; case 'error': return 'destructive'; default: return 'secondary'; }
 }
 
-function envVariant(e: string) {
-    switch (e) { case 'production': return 'default' as const; case 'staging': return 'warning' as const; default: return 'secondary' as const; }
+function envVariant(e: string): 'default' | 'outline' | 'secondary' {
+    switch (e) { case 'production': return 'default'; case 'staging': return 'outline'; default: return 'secondary'; }
 }
 </script>
 
@@ -34,7 +51,7 @@ function envVariant(e: string) {
             <Button as-child><Link :href="'/web-apps/create'"><Plus class="mr-2 h-4 w-4" />Add Web App</Link></Button>
         </div>
 
-        <div v-if="apps.length === 0" class="flex flex-col items-center justify-center rounded-xl border border-dashed py-16">
+        <div v-if="allApps.length === 0" class="flex flex-col items-center justify-center rounded-xl border border-dashed py-16">
             <AppWindow class="mb-4 h-12 w-12 text-muted-foreground" />
             <h2 class="text-lg font-medium">No web apps yet</h2>
             <p class="mb-4 text-sm text-muted-foreground">Add your first web application</p>
@@ -42,7 +59,7 @@ function envVariant(e: string) {
         </div>
 
         <div v-else class="space-y-3">
-            <div v-for="app in apps" :key="app.id" class="rounded-xl border p-4 transition-shadow hover:shadow-md">
+            <div v-for="app in allApps" :key="app.id" class="rounded-xl border p-4 transition-shadow hover:shadow-md">
                 <div class="flex items-start justify-between">
                     <div class="flex items-center gap-3">
                         <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
