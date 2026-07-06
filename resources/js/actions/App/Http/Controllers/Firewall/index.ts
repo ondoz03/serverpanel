@@ -1,4 +1,5 @@
 import FirewallController from './FirewallController'
+
 const Firewall = {
     FirewallController: Object.assign(FirewallController, FirewallController),
 }
