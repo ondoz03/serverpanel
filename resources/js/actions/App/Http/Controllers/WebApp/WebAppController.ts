@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../wayfinder'
 /**
 * @see \App\Http\Controllers\WebApp\WebAppController::index
 * @see app/Http/Controllers/WebApp/WebAppController.php:10
@@ -42,43 +42,6 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: index.url(options),
     method: 'head',
 })
-
-/**
-* @see \App\Http\Controllers\WebApp\WebAppController::index
-* @see app/Http/Controllers/WebApp/WebAppController.php:10
-* @route '/web-apps'
-*/
-const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\WebApp\WebAppController::index
-* @see app/Http/Controllers/WebApp/WebAppController.php:10
-* @route '/web-apps'
-*/
-indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\WebApp\WebAppController::index
-* @see app/Http/Controllers/WebApp/WebAppController.php:10
-* @route '/web-apps'
-*/
-indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-index.form = indexForm
 
 /**
 * @see \App\Http\Controllers\WebApp\WebAppController::show
@@ -143,43 +106,6 @@ show.head = (args: { webApp: string | number } | [webApp: string | number ] | st
 })
 
 /**
-* @see \App\Http\Controllers\WebApp\WebAppController::show
-* @see app/Http/Controllers/WebApp/WebAppController.php:50
-* @route '/web-apps/{webApp}'
-*/
-const showForm = (args: { webApp: string | number } | [webApp: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\WebApp\WebAppController::show
-* @see app/Http/Controllers/WebApp/WebAppController.php:50
-* @route '/web-apps/{webApp}'
-*/
-showForm.get = (args: { webApp: string | number } | [webApp: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\WebApp\WebAppController::show
-* @see app/Http/Controllers/WebApp/WebAppController.php:50
-* @route '/web-apps/{webApp}'
-*/
-showForm.head = (args: { webApp: string | number } | [webApp: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-show.form = showForm
-
-/**
 * @see \App\Http\Controllers\WebApp\WebAppController::ssl
 * @see app/Http/Controllers/WebApp/WebAppController.php:65
 * @route '/web-apps/{webApp}/ssl'
@@ -240,43 +166,6 @@ ssl.head = (args: { webApp: string | number } | [webApp: string | number ] | str
     url: ssl.url(args, options),
     method: 'head',
 })
-
-/**
-* @see \App\Http\Controllers\WebApp\WebAppController::ssl
-* @see app/Http/Controllers/WebApp/WebAppController.php:65
-* @route '/web-apps/{webApp}/ssl'
-*/
-const sslForm = (args: { webApp: string | number } | [webApp: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: ssl.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\WebApp\WebAppController::ssl
-* @see app/Http/Controllers/WebApp/WebAppController.php:65
-* @route '/web-apps/{webApp}/ssl'
-*/
-sslForm.get = (args: { webApp: string | number } | [webApp: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: ssl.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\WebApp\WebAppController::ssl
-* @see app/Http/Controllers/WebApp/WebAppController.php:65
-* @route '/web-apps/{webApp}/ssl'
-*/
-sslForm.head = (args: { webApp: string | number } | [webApp: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: ssl.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-ssl.form = sslForm
 
 /**
 * @see \App\Http\Controllers\WebApp\WebAppController::env
@@ -341,43 +230,6 @@ env.head = (args: { webApp: string | number } | [webApp: string | number ] | str
 })
 
 /**
-* @see \App\Http\Controllers\WebApp\WebAppController::env
-* @see app/Http/Controllers/WebApp/WebAppController.php:76
-* @route '/web-apps/{webApp}/env'
-*/
-const envForm = (args: { webApp: string | number } | [webApp: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: env.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\WebApp\WebAppController::env
-* @see app/Http/Controllers/WebApp/WebAppController.php:76
-* @route '/web-apps/{webApp}/env'
-*/
-envForm.get = (args: { webApp: string | number } | [webApp: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: env.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\WebApp\WebAppController::env
-* @see app/Http/Controllers/WebApp/WebAppController.php:76
-* @route '/web-apps/{webApp}/env'
-*/
-envForm.head = (args: { webApp: string | number } | [webApp: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: env.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-env.form = envForm
-
-/**
 * @see \App\Http\Controllers\WebApp\WebAppController::git
 * @see app/Http/Controllers/WebApp/WebAppController.php:94
 * @route '/web-apps/{webApp}/git'
@@ -440,43 +292,6 @@ git.head = (args: { webApp: string | number } | [webApp: string | number ] | str
 })
 
 /**
-* @see \App\Http\Controllers\WebApp\WebAppController::git
-* @see app/Http/Controllers/WebApp/WebAppController.php:94
-* @route '/web-apps/{webApp}/git'
-*/
-const gitForm = (args: { webApp: string | number } | [webApp: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: git.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\WebApp\WebAppController::git
-* @see app/Http/Controllers/WebApp/WebAppController.php:94
-* @route '/web-apps/{webApp}/git'
-*/
-gitForm.get = (args: { webApp: string | number } | [webApp: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: git.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\WebApp\WebAppController::git
-* @see app/Http/Controllers/WebApp/WebAppController.php:94
-* @route '/web-apps/{webApp}/git'
-*/
-gitForm.head = (args: { webApp: string | number } | [webApp: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: git.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-git.form = gitForm
-
-/**
 * @see \App\Http\Controllers\WebApp\WebAppController::settings
 * @see app/Http/Controllers/WebApp/WebAppController.php:110
 * @route '/web-apps/{webApp}/settings'
@@ -537,43 +352,6 @@ settings.head = (args: { webApp: string | number } | [webApp: string | number ] 
     url: settings.url(args, options),
     method: 'head',
 })
-
-/**
-* @see \App\Http\Controllers\WebApp\WebAppController::settings
-* @see app/Http/Controllers/WebApp/WebAppController.php:110
-* @route '/web-apps/{webApp}/settings'
-*/
-const settingsForm = (args: { webApp: string | number } | [webApp: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: settings.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\WebApp\WebAppController::settings
-* @see app/Http/Controllers/WebApp/WebAppController.php:110
-* @route '/web-apps/{webApp}/settings'
-*/
-settingsForm.get = (args: { webApp: string | number } | [webApp: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: settings.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\WebApp\WebAppController::settings
-* @see app/Http/Controllers/WebApp/WebAppController.php:110
-* @route '/web-apps/{webApp}/settings'
-*/
-settingsForm.head = (args: { webApp: string | number } | [webApp: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: settings.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-settings.form = settingsForm
 
 const WebAppController = { index, show, ssl, env, git, settings }
 

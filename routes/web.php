@@ -4,6 +4,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::inertia('/', 'Welcome')->name('home');
 
+Route::middleware(['guest'])->group(function () {
+    Route::get('auth/{provider}/redirect', [\App\Http\Controllers\Auth\OAuthController::class, 'redirect'])
+        ->name('oauth.redirect');
+    Route::get('auth/{provider}/callback', [\App\Http\Controllers\Auth\OAuthController::class, 'callback'])
+        ->name('oauth.callback');
+});
+
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', function () {
         return \Inertia\Inertia::render('Dashboard', [

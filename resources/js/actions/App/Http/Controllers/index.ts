@@ -1,3 +1,4 @@
+import Auth from './Auth'
 import Server from './Server'
 import WebApp from './WebApp'
 import Database from './Database'
@@ -7,6 +8,7 @@ import Backup from './Backup'
 import Settings from './Settings'
 
 const Controllers = {
+    Auth: Object.assign(Auth, Auth),
     Server: Object.assign(Server, Server),
     WebApp: Object.assign(WebApp, WebApp),
     Database: Object.assign(Database, Database),
