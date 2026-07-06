@@ -16,7 +16,7 @@ const props = withDefaults(defineProps<{
 const gradientId = `chart-grad-${Math.random().toString(36).slice(2, 9)}`
 const tooltip = ref<{ x: number; value: number } | null>(null)
 
-const pad = { top: 8, right: 8, bottom: showAxis ? 20 : 8, left: 8 }
+const pad = { top: 8, right: 8, bottom: props.showAxis ? 20 : 8, left: 8 }
 const chartWidth = 300
 const innerW = chartWidth - pad.left - pad.right
 const innerH = props.height - pad.top - pad.bottom

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { router } from '@inertiajs/vue3';
-import { computed, onMounted, onUnmounted, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { Skeleton } from '@/components/ui/skeleton';
 import { SidebarInset } from '@/components/ui/sidebar';
 import type { AppVariant } from '@/types';
@@ -20,11 +20,6 @@ const isLoading = ref(false);
 onMounted(() => {
     router.on('start', () => { isLoading.value = true; });
     router.on('finish', () => { isLoading.value = false; });
-});
-
-onUnmounted(() => {
-    router.off('start');
-    router.off('finish');
 });
 </script>
 

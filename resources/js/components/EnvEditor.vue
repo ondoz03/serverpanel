@@ -22,7 +22,7 @@ const emit = defineEmits<{
   'update:modelValue': [value: EnvVariable[]]
 }>()
 
-function update(index: number, field: keyof EnvVariable, val: string | boolean) {
+function update(index: number, field: keyof EnvVariable, val: string | boolean | number) {
   const next = [...props.modelValue]
   next[index] = { ...next[index], [field]: val }
   emit('update:modelValue', next)

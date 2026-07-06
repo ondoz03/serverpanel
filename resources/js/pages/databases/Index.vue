@@ -53,7 +53,7 @@ defineOptions({
               <CardDescription>{{ db.type }} {{ db.version }}</CardDescription>
             </div>
           </div>
-          <Badge :variant="db.status === 'running' ? 'success' : 'secondary'">
+          <Badge :variant="db.status === 'active' ? 'success' : 'secondary'">
             {{ db.status }}
           </Badge>
         </CardHeader>
@@ -69,11 +69,11 @@ defineOptions({
             </div>
             <div>
               <span class="text-muted-foreground">Databases</span>
-              <p class="font-medium">{{ db.databases_count }}</p>
+              <p class="font-medium">{{ db.databases }}</p>
             </div>
             <div>
               <span class="text-muted-foreground">Users</span>
-              <p class="font-medium">{{ db.users_count }}</p>
+              <p class="font-medium">{{ db.users }}</p>
             </div>
           </div>
         </CardContent>

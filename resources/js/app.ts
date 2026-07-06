@@ -14,10 +14,10 @@ createInertiaApp({
         const pages = import.meta.glob('./pages/**/*.vue', { eager: true });
         const page = pages[`./pages/${name}.vue`];
         if (!page) throw new Error(`Page not found: ${name}`);
-        return page;
+        return page as any;
     },
     setup({ el, App, props, plugin }) {
-        const app = createApp(App, props);
+        const app = createApp(App, props as any);
         app.use(plugin);
         app.use(createPinia());
         app.mount(el);

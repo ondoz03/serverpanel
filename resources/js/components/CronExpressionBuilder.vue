@@ -81,8 +81,8 @@ const description = computed(() => {
   return props.modelValue
 })
 
-function onPresetChange(value: string) {
-  emit("update:modelValue", value)
+function onPresetChange(value: unknown) {
+  emit("update:modelValue", String(value))
 }
 
 function onInputChange(e: Event) {

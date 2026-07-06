@@ -43,7 +43,7 @@ function usageColor(percent: number): string {
     return 'bg-green-500';
 }
 
-function statusVariant(status: string): string {
+function statusVariant(status: string): 'success' | 'warning' | 'destructive' | 'secondary' {
     switch (status) {
         case 'active': return 'success' as const;
         case 'provisioning': return 'warning' as const;
@@ -52,7 +52,7 @@ function statusVariant(status: string): string {
     }
 }
 
-function serviceVariant(status: string): string {
+function serviceVariant(status: string): 'success' | 'secondary' | 'destructive' | 'outline' {
     switch (status) {
         case 'active': return 'success' as const;
         case 'inactive': return 'secondary' as const;

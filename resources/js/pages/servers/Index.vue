@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Head, Link } from '@inertiajs/vue3';
 import { Activity, Circle, HardDrive, MemoryStick, Network, Plus, Server as ServerIcon } from '@lucide/vue';
-import servers from '@/routes/servers';
+import serversRoute from '@/routes/servers';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -29,7 +29,7 @@ function formatUptime(seconds: number): string {
     return `${hours}h`;
 }
 
-function statusVariant(status: string): string {
+function statusVariant(status: string): 'success' | 'warning' | 'destructive' | 'secondary' {
     switch (status) {
         case 'active': return 'success';
         case 'provisioning': return 'warning';
@@ -55,7 +55,7 @@ function usageColor(percent: number): string {
                 <p class="text-sm text-muted-foreground">Manage your connected servers</p>
             </div>
             <Button as-child>
-                <Link :href="servers.create()">
+                <Link :href="serversRoute.create()">
                     <Plus class="mr-2 h-4 w-4" />
                     Add Server
                 </Link>
@@ -67,7 +67,7 @@ function usageColor(percent: number): string {
             <h2 class="text-lg font-medium">No servers yet</h2>
             <p class="mb-4 text-sm text-muted-foreground">Connect your first server to get started</p>
             <Button as-child>
-                <Link :href="servers.create()">
+                <Link :href="serversRoute.create()">
                     <Plus class="mr-2 h-4 w-4" />
                     Add Your First Server
                 </Link>
@@ -85,7 +85,7 @@ function usageColor(percent: number): string {
                                 </div>
                                 <div>
                                     <CardTitle class="text-base">
-                                        <Link :href="servers.show(server.id)" class="hover:underline">
+                                        <Link :href="serversRoute.show(server.id)" class="hover:underline">
                                             {{ server.name }}
                                         </Link>
                                     </CardTitle>
