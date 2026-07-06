@@ -611,6 +611,12 @@ app/
 │       ├── DeploymentStarted.php
 │       ├── DeploymentCompleted.php
 │       └── DeploymentFailed.php
+├── Interfaces/
+│   └── Repositories/
+│       └── RepositoryInterface.php    ← CRUD contract
+├── Repositories/
+│   ├── BaseRepository.php              ← Generic CRUD implementation
+│   └── ServerRepository.php            ← Server-specific queries
 ├── Http/
 │   ├── Controllers/
 │   │   ├── Auth/
@@ -653,20 +659,26 @@ app/
 │       └── RunBackup.php
 ├── Models/
 │   ├── User.php
+│   ├── Plan.php
 │   ├── Organization.php
 │   ├── Server.php
+│   ├── ServerService.php
+│   ├── ServerMetric.php
 │   ├── WebApplication.php
 │   ├── SslCertificate.php
+│   ├── EnvironmentVariable.php
+│   ├── GitDeployment.php
+│   ├── Deployment.php
 │   ├── Database.php
 │   ├── DatabaseUser.php
-│   ├── Deployment.php
-│   ├── GitDeployment.php
 │   ├── FirewallRule.php
 │   ├── CronJob.php
-│   ├── ServerMetric.php
 │   ├── Backup.php
-│   └── ActivityLog.php
+│   ├── ActivityLog.php
+│   └── ApiKey.php
 ├── Services/
+│   ├── ServerService.php               ← Server business logic
+│   ├── OrganizationService.php          ← Team/role management
 │   ├── Agent/
 │   │   ├── AgentCommandService.php   ← Kirim command ke agent
 │   │   ├── AgentAuthService.php      ← HMAC verify

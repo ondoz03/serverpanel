@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Head, Link, router } from '@inertiajs/vue3';
-import { Activity, AppWindow, ArrowLeft, Database, HardDrive, MemoryStick, Play, RefreshCw, ScrollText, Server as ServerIcon, Shield, Terminal, Timer, RotateCw } from '@lucide/vue';
+import { Activity, AppWindow, ArrowLeft, Database, HardDrive, MemoryStick, Play, RefreshCw, ScrollText, Server as ServerIcon, Settings, Shield, Terminal, Timer, RotateCw } from '@lucide/vue';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -93,6 +93,12 @@ function serviceVariant(status: string): 'success' | 'secondary' | 'destructive'
                 <Link :href="servers.monitoring(server.id)">
                     <Activity class="mr-2 h-4 w-4" />
                     Monitoring
+                </Link>
+            </Button>
+            <Button size="sm" variant="outline" as-child>
+                <Link :href="servers.settings(server.id)">
+                    <Settings class="mr-2 h-4 w-4" />
+                    Settings
                 </Link>
             </Button>
             <Button size="sm" variant="outline">

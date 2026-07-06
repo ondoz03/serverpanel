@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Head, Link } from '@inertiajs/vue3';
+import { Head, Link, useForm } from '@inertiajs/vue3';
 import { ArrowLeft, RefreshCw, Trash2 } from '@lucide/vue';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -22,6 +22,32 @@ defineOptions({
 const props = defineProps<{
     server: Server;
 }>();
+
+const form = useForm({
+    name: props.server.name,
+    hostname: props.server.hostname ?? '',
+    ip_address: props.server.ip_address,
+    ssh_port: 22,
+    provider: props.server.provider ?? '',
+    datacenter: props.server.datacenter ?? '',
+    os: props.server.os ?? '',
+    plan_name: props.server.plan_name ?? '',
+});
+
+function updateServer() {
+    form.put(servers.update(props.server.id).url, {
+        preserveScroll: true,
+        onSuccess: () => form.reset(),
+    });
+}
+
+function confirmDelete() {
+    if (confirm('Are you sure you want to remove this server? This action cannot be undone.')) {
+        form.delete(servers.destroy(props.server.id).url, {
+            preserveScroll: true,
+        });
+    }
+}
 </script>
 
 <template>
@@ -49,13 +75,30 @@ const props = defineProps<{
                 <CardContent class="space-y-4">
                     <div class="space-y-2">
                         <Label for="name">Server Name</Label>
-                        <Input id="name" :value="server.name" />
+                        <Input id="name" v-model="form.name" :error="form.errors.name" />
                     </div>
+                    <div v-if="form.errors.name" class="text-sm text-red-500">{{ form.errors.name }}</div>
                     <div class="space-y-2">
                         <Label for="hostname">Hostname</Label>
-                        <Input id="hostname" :value="server.hostname" />
+                        <Input id="hostname" v-model="form.hostname" />
                     </div>
-                    <Button size="sm">Save Changes</Button>
+                    <div class="space-y-2">
+                        <Label for="ip_address">IP Address</Label>
+                        <Input id="ip_address" v-model="form.ip_address" />
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="space-y-2">
+                            <Label for="provider">Provider</Label>
+                            <Input id="provider" v-model="form.provider" />
+                        </div>
+                        <div class="space-y-2">
+                            <Label for="datacenter">Datacenter</Label>
+                            <Input id="datacenter" v-model="form.datacenter" />
+                        </div>
+                    </div>
+                    <Button size="sm" :disabled="form.processing" @click="updateServer">
+                        {{ form.processing ? 'Saving...' : 'Save Changes' }}
+                    </Button>
                 </CardContent>
             </Card>
 
@@ -141,9 +184,9 @@ const props = defineProps<{
                                 <div class="text-sm font-medium text-red-600 dark:text-red-400">Remove Server</div>
                                 <div class="text-xs text-muted-foreground">Permanently remove this server from ServerPanel. The agent will be uninstalled.</div>
                             </div>
-                            <Button variant="destructive" size="sm">
+                            <Button variant="destructive" size="sm" :disabled="form.processing" @click="confirmDelete">
                                 <Trash2 class="mr-2 h-3 w-3" />
-                                Remove
+                                {{ form.processing ? 'Removing...' : 'Remove' }}
                             </Button>
                         </div>
                     </div>

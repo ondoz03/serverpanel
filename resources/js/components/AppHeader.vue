@@ -150,9 +150,14 @@ const rightNavItems: NavItem[] = [
                     </Sheet>
                 </div>
 
-                <Link :href="dashboard()" class="flex items-center gap-x-2">
-                    <AppLogo />
-                </Link>
+                <div class="flex items-center gap-x-8">
+                    <Link :href="dashboard()" class="flex items-center gap-3 pr-4">
+                        <AppLogo />
+                    </Link>
+                    <template v-if="breadcrumbs.length > 1">
+                        <Breadcrumbs :breadcrumbs="breadcrumbs" />
+                    </template>
+                </div>
 
 
                 <div class="ml-auto flex items-center space-x-2">
@@ -276,17 +281,6 @@ const rightNavItems: NavItem[] = [
                     </NavigationMenu>
                 </div>
 
-            </div>
-        </div>
-
-        <div
-            v-if="props.breadcrumbs.length > 1"
-            class="flex w-full border-b border-sidebar-border/70"
-        >
-            <div
-                class="mx-auto flex h-12 w-full items-center justify-start px-4 text-neutral-500 md:max-w-7xl"
-            >
-                <Breadcrumbs :breadcrumbs="breadcrumbs" />
             </div>
         </div>
     </div>

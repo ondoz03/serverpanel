@@ -17,12 +17,15 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('dashboard');
 
     // Server routes
+    Route::post('servers', [\App\Http\Controllers\Server\ServerController::class, 'store'])->name('servers.store');
     Route::get('servers', [\App\Http\Controllers\Server\ServerController::class, 'index'])->name('servers.index');
     Route::inertia('servers/create', 'servers/Create')->name('servers.create');
     Route::get('servers/{server}', [\App\Http\Controllers\Server\ServerController::class, 'show'])->name('servers.show');
     Route::get('servers/{server}/monitoring', [\App\Http\Controllers\Server\ServerController::class, 'monitoring'])->name('servers.monitoring');
     Route::get('servers/{server}/provisioning', [\App\Http\Controllers\Server\ServerController::class, 'provisioning'])->name('servers.provisioning');
     Route::get('servers/{server}/settings', [\App\Http\Controllers\Server\ServerController::class, 'settings'])->name('servers.settings');
+    Route::put('servers/{server}', [\App\Http\Controllers\Server\ServerController::class, 'update'])->name('servers.update');
+    Route::delete('servers/{server}', [\App\Http\Controllers\Server\ServerController::class, 'destroy'])->name('servers.destroy');
 
     // Web App routes
     Route::get('web-apps', [\App\Http\Controllers\WebApp\WebAppController::class, 'index'])->name('web-apps.index');

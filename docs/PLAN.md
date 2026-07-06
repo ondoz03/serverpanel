@@ -66,21 +66,23 @@
 
 ## Phase 6: Backend — Core Database & Auth
 
-- [ ] **6.1** Migrations: plans, users, organizations, organization_users
-- [ ] **6.2** Migrations: servers, server_services, server_metrics
-- [ ] **6.3** Migrations: web_applications, ssl_certificates, environment_vars
-- [ ] **6.4** Migrations: git_deployments, deployments
-- [ ] **6.5** Migrations: databases, database_users, firewall_rules, cron_jobs, backups
-- [ ] **6.6** Migrations: activity_logs, api_keys, subscriptions, payment_transactions
-- [ ] **6.7** Eloquent Models + Relationships
+- [x] **6.1** Migrations: plans, users, organizations, organization_users
+- [x] **6.2** Migrations: servers, server_services, server_metrics
+- [x] **6.3** Migrations: web_applications, ssl_certificates, environment_vars
+- [x] **6.4** Migrations: git_deployments, deployments
+- [x] **6.5** Migrations: databases, database_users, firewall_rules, cron_jobs, backups
+- [x] **6.6** Migrations: activity_logs, api_keys (subscriptions, payment_transactions deferred)
+- [x] **6.7** Eloquent Models + Relationships (WebApplication, SslCertificate, EnvironmentVariable, GitDeployment, Deployment, Database, DatabaseUser, FirewallRule, CronJob, Backup, ActivityLog, ApiKey)
 - [ ] **6.8** Authentication Controllers (Register, Login, 2FA, OAuth)
-- [ ] **6.9** Organization & Team logic (CRUD, roles, invitations)
+- [x] **6.9** Organization & Team logic (OrganizationService: invite, role management)
+
+> **Architecture:** Added Repository + Service Pattern (`app/Interfaces/Repositories/`, `app/Repositories/`, `app/Services/`)
 
 ---
 
 ## Phase 7: Backend — Server & Agent
 
-- [ ] **7.1** ServerController (CRUD, connection test)
+- [x] **7.1** ServerController (CRUD, refactored ke Repository + Service Pattern)
 - [ ] **7.2** AgentRegisterController (token generation, one-liner script endpoint)
 - [ ] **7.3** AgentCommandController (dispatch command to agent via WebSocket)
 - [ ] **7.4** AgentMetricController (receive & store metrics)
