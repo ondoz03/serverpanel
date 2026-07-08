@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Head, Link, router } from '@inertiajs/vue3';
-import { Activity, AppWindow, ArrowLeft, Database, HardDrive, MemoryStick, Play, RefreshCw, ScrollText, Server as ServerIcon, Settings, Shield, Terminal, Timer, RotateCw } from '@lucide/vue';
+import { Activity, AppWindow, ArrowLeft, Copy, Database, HardDrive, MemoryStick, Play, RefreshCw, ScrollText, Server as ServerIcon, Settings, Shield, Terminal, Timer, RotateCw } from '@lucide/vue';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -11,6 +11,8 @@ import databases from '@/routes/databases';
 import firewall from '@/routes/firewall';
 import cronJobs from '@/routes/cron-jobs';
 import type { Server } from '@/types';
+import { onMounted, onUnmounted, computed } from 'vue';
+import { useClipboard } from '@/composables/useClipboard';
 
 defineOptions({
     layout: {
@@ -24,6 +26,30 @@ defineOptions({
 const props = defineProps<{
     server: Server;
 }>();
+
+const { copied, copy } = useClipboard();
+
+const installScript = computed(() => {
+    if (typeof window === 'undefined') return '';
+    const endpoint = window.location.origin;
+    return `curl -fsSL ${endpoint}/install.sh | bash -s -- --token=${props.server.agent_token} --endpoint=${endpoint}`;
+});
+
+let interval: any;
+
+onMounted(() => {
+    if (props.server.status === 'pending') {
+        interval = setInterval(() => {
+            router.reload({
+                only: ['server'],
+            });
+        }, 3000);
+    }
+});
+
+onUnmounted(() => {
+    if (interval) clearInterval(interval);
+});
 
 function formatBytes(bytes: number): string {
     const gb = bytes / (1024 * 1024 * 1024);
@@ -65,7 +91,67 @@ function serviceVariant(status: string): 'success' | 'secondary' | 'destructive'
 <template>
     <Head :title="server.name" />
 
-    <div class="flex flex-col gap-6 p-4">
+    <!-- Pending State -->
+    <div v-if="server.status === 'pending'" class="mx-auto max-w-3xl p-6">
+        <div class="mb-6 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <Button variant="ghost" size="icon" as-child>
+                    <Link :href="servers.index()">
+                        <ArrowLeft class="h-4 w-4" />
+                    </Link>
+                </Button>
+                <div>
+                    <h1 class="text-2xl font-bold tracking-tight">Setup Agent: {{ server.name }}</h1>
+                    <p class="text-sm text-muted-foreground">IP Address: {{ server.ip_address }}</p>
+                </div>
+            </div>
+            <Badge variant="secondary" class="animate-pulse">
+                Waiting for Agent...
+            </Badge>
+        </div>
+
+        <Card class="border-primary/20 bg-card">
+            <CardHeader>
+                <CardTitle>Install ServerPanel Agent</CardTitle>
+                <CardDescription>
+                    Run the following command as root on your server to register it with your account.
+                </CardDescription>
+            </CardHeader>
+            <CardContent class="space-y-6">
+                <!-- Code command -->
+                <div class="relative rounded-lg border bg-black p-4 font-mono text-sm text-green-400">
+                    <div class="absolute top-3 right-3 flex items-center gap-2">
+                        <Button size="sm" variant="ghost" class="h-8 text-xs text-white hover:bg-neutral-800" @click="copy(installScript)">
+                            <Copy class="mr-1 h-3.5 w-3.5" />
+                            {{ copied ? 'Copied' : 'Copy' }}
+                        </Button>
+                    </div>
+                    <pre class="overflow-x-auto whitespace-pre-wrap pr-16 leading-relaxed">{{ installScript }}</pre>
+                </div>
+
+                <!-- Step explanation -->
+                <div class="space-y-4 rounded-lg bg-muted p-4 text-sm text-muted-foreground">
+                    <h4 class="font-medium text-foreground">What this script does:</h4>
+                    <ul class="list-inside list-disc space-y-1.5 text-xs">
+                        <li>Identifies your server's Operating System and architecture.</li>
+                        <li>Configures security environment variables (using your secure agent token).</li>
+                        <li>Initiates secure HTTPS connection back to the ServerPanel platform.</li>
+                    </ul>
+                </div>
+
+                <!-- Pulse indicator -->
+                <div class="flex items-center justify-center gap-3 rounded-lg border border-yellow-200/50 bg-yellow-500/5 p-4 text-center dark:border-yellow-900/50">
+                    <div class="h-2 w-2 animate-ping rounded-full bg-yellow-500" />
+                    <span class="text-xs font-medium text-yellow-600 dark:text-yellow-400">
+                        Waiting for agent connection. The page will refresh automatically.
+                    </span>
+                </div>
+            </CardContent>
+        </Card>
+    </div>
+
+    <!-- Active State -->
+    <div v-else class="flex flex-col gap-6 p-4">
         <div class="flex items-center gap-4">
             <Button variant="ghost" size="icon" as-child>
                 <Link :href="servers.index()">

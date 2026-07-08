@@ -83,13 +83,13 @@
 ## Phase 7: Backend — Server & Agent
 
 - [x] **7.1** ServerController (CRUD, refactored ke Repository + Service Pattern)
-- [ ] **7.2** AgentRegisterController (token generation, one-liner script endpoint)
-- [ ] **7.3** AgentCommandController (dispatch command to agent via WebSocket)
-- [ ] **7.4** AgentMetricController (receive & store metrics)
-- [ ] **7.5** ProvisionServer Job + LEMP installer
-- [ ] **7.6** Agent HMAC Middleware + AuthService
-- [ ] **7.7** Laravel Reverb WebSocket channels (server, deployment)
-- [ ] **7.8** Agent Node.js app (WebSocket client, collectors, executors)
+- [x] **7.2** AgentRegisterController (token generation, one-liner script endpoint)
+- [x] **7.3** AgentCommandController (dispatch command to agent via WebSocket)
+- [x] **7.4** AgentMetricController (receive & store metrics)
+- [x] **7.5** ProvisionServer Job + LEMP installer
+- [x] **7.6** Agent HMAC Middleware + AuthService
+- [x] **7.7** Laravel Reverb WebSocket channels (server, deployment)
+- [x] **7.8** Agent Node.js app (WebSocket client, collectors, executors)
 
 ---
 
@@ -132,13 +132,13 @@
 
 ## Phase 12: Agent (Node.js / TypeScript)
 
-- [ ] **12.1** Agent project scaffold (TypeScript, PM2, build setup)
-- [ ] **12.2** WebSocket client (connect, reconnect, auth, heartbeat)
-- [ ] **12.3** Metrics collectors (CPU, RAM, Disk, Network, Services)
-- [ ] **12.4** Command executors (shell, nginx, php, mysql, ssl, git)
-- [ ] **12.5** Provisioner (LEMP stack, webapp, firewall)
-- [ ] **12.6** Security: HMAC signing, restricted shell exec, non-root user
-- [ ] **12.7** Install one-liner script (`install.sh`)
+- [x] **12.1** Agent project scaffold (TypeScript, PM2, build setup)
+- [x] **12.2** WebSocket client (connect, reconnect, auth, heartbeat)
+- [x] **12.3** Metrics collectors (CPU, RAM, Disk, Network, Services)
+- [x] **12.4** Command executors (shell, nginx, php, mysql, ssl, git)
+- [x] **12.5** Provisioner (LEMP stack, webapp, firewall)
+- [x] **12.6** Security: HMAC signing, restricted shell exec, non-root user
+- [x] **12.7** Install one-liner script (`install.sh`)
 
 ---
 

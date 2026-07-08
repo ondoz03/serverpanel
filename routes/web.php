@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::inertia('/', 'Welcome')->name('home');
 
+Route::get('install.sh', [\App\Http\Controllers\Agent\AgentRegisterController::class, 'installScript'])
+    ->name('agent.install-script');
+
 Route::middleware(['guest'])->group(function () {
     Route::get('auth/{provider}/redirect', [\App\Http\Controllers\Auth\OAuthController::class, 'redirect'])
         ->name('oauth.redirect');
@@ -33,6 +36,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('servers/{server}/settings', [\App\Http\Controllers\Server\ServerController::class, 'settings'])->name('servers.settings');
     Route::put('servers/{server}', [\App\Http\Controllers\Server\ServerController::class, 'update'])->name('servers.update');
     Route::delete('servers/{server}', [\App\Http\Controllers\Server\ServerController::class, 'destroy'])->name('servers.destroy');
+    Route::post('servers/{server}/services/{service}/{action}', [\App\Http\Controllers\Server\ServerController::class, 'manageService'])
+        ->name('servers.services.manage');
 
     // Web App routes
     Route::get('web-apps', [\App\Http\Controllers\WebApp\WebAppController::class, 'index'])->name('web-apps.index');

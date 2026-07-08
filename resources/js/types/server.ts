@@ -37,4 +37,5 @@ export type Server = {
     databases_count: number;
     firewall_rules_count: number;
     cron_jobs_count: number;
+    agent_token?: string;
 };
