@@ -1,7 +1,8 @@
-import dotenv from 'dotenv';
 import fs from 'fs';
+import dotenv from 'dotenv';
 
 const prodEnvPath = '/etc/serverpanel-agent/.env';
+
 if (fs.existsSync(prodEnvPath)) {
   dotenv.config({ path: prodEnvPath });
 } else {

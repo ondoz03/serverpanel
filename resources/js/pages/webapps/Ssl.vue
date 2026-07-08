@@ -1,16 +1,21 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
 import { Head, Link } from '@inertiajs/vue3'
-import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
-import { toast } from 'vue-sonner'
 import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from '@/components/ui/tabs'
+  Globe,
+  Lock,
+  RefreshCw,
+  Plus,
+  GitBranch,
+  Activity,
+  Settings,
+  Server as ServerIcon,
+  Terminal,
+} from '@lucide/vue'
+import { ref, computed } from 'vue'
+import { toast } from 'vue-sonner'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import {
   Dialog,
   DialogContent,
@@ -23,17 +28,11 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import {
-  Globe,
-  Lock,
-  RefreshCw,
-  ArrowLeft,
-  Plus,
-  GitBranch,
-  Activity,
-  Settings,
-  Server as ServerIcon,
-  Terminal,
-} from '@lucide/vue'
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from '@/components/ui/tabs'
 
 interface Certificate {
   id: string | number
@@ -72,9 +71,11 @@ const app = computed(() => {
   if (String(props.app.id).startsWith('local-')) {
     try {
       const local = localStorage.getItem('local_webapps')
+
       if (local) {
         const parsed = JSON.parse(local) as any[]
         const found = parsed.find(a => String(a.id) === String(props.app.id))
+
         if (found) {
           return { ...props.app, ...found }
         }
@@ -83,6 +84,7 @@ const app = computed(() => {
       console.error('Failed to load local webapp in ssl details', e)
     }
   }
+
   return props.app
 })
 
@@ -99,14 +101,16 @@ const autoRenewInput = ref(true)
 
 const customCert = ref('')
 const customKey = ref('')
-const customChain = ref('')
 
 function openAddDialog() {
   isAddDialogOpen.value = true
 }
 
 function issueSsl() {
-  if (isIssuing.value) return
+  if (isIssuing.value) {
+return
+}
+
   isIssuing.value = true
 
   toast.promise(

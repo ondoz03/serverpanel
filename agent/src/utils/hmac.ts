@@ -9,10 +9,12 @@ export function verifyPlatformSignature(signable: string, signature: string): bo
   if (!signature || !signable) {
     return false;
   }
+
   const expected = generateHmac(signable);
+
   try {
     return crypto.timingSafeEqual(Buffer.from(expected), Buffer.from(signature));
-  } catch (e) {
+  } catch {
     return false;
   }
 }

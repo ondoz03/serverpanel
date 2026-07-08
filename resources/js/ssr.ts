@@ -1,8 +1,8 @@
-import { createSSRApp, h } from 'vue';
-import { renderToString } from '@vue/server-renderer';
 import { createInertiaApp } from '@inertiajs/vue3';
 import createServer from '@inertiajs/vue3/server';
+import { renderToString } from '@vue/server-renderer';
 import { createPinia } from 'pinia';
+import { createSSRApp, h } from 'vue';
 import AppLayout from '@/layouts/AppLayout.vue';
 import AuthLayout from '@/layouts/AuthLayout.vue';
 import SettingsLayout from '@/layouts/settings/Layout.vue';
@@ -16,7 +16,11 @@ createServer((page) =>
         resolve: (name) => {
             const pages = import.meta.glob('./pages/**/*.vue', { eager: true });
             const page = pages[`./pages/${name}.vue`];
-            if (!page) throw new Error(`Page not found: ${name}`);
+
+            if (!page) {
+throw new Error(`Page not found: ${name}`);
+}
+
             return page as any;
         },
         setup({ App, props, plugin }) {

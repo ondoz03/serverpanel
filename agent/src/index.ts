@@ -1,6 +1,6 @@
+import { collectAndPushMetrics } from './collectors';
 import { config } from './config';
 import { logger } from './utils/logger';
-import { collectAndPushMetrics } from './collectors';
 import { AgentWsClient } from './ws/client';
 
 logger.info('==========================================');

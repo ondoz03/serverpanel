@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { ref } from "vue"
 import { Copy, Check } from "@lucide/vue"
-import { Button } from "@/components/ui/button"
+import { ref } from "vue"
 import { toast } from "vue-sonner"
+import { Button } from "@/components/ui/button"
 
 const props = withDefaults(defineProps<{
   value: string

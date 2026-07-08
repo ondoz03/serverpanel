@@ -1,14 +1,13 @@
 <script setup lang="ts">
 import { Head, Link } from '@inertiajs/vue3';
-import { Activity, ArrowLeft, HardDrive, MemoryStick, Network, Timer } from '@lucide/vue';
+import { Activity, ArrowLeft, HardDrive, MemoryStick, Network } from '@lucide/vue';
+import { ref } from 'vue';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Separator } from '@/components/ui/separator';
 import servers from '@/routes/servers';
 import type { Server } from '@/types';
-import { ref } from 'vue';
 
 defineOptions({
     layout: {
@@ -19,7 +18,7 @@ defineOptions({
     },
 });
 
-const props = defineProps<{
+defineProps<{
     server: Server;
 }>();
 
@@ -33,14 +32,8 @@ const netInHistory = [1.2, 2.4, 0.8, 3.1, 1.5, 2.2, 1.8, 2.9, 1.1, 2.7, 0.5, 1.9
 
 function formatBytes(bytes: number): string {
     const gb = bytes / (1024 * 1024 * 1024);
-    return `${gb.toFixed(1)} GB`;
-}
 
-function formatUptime(seconds: number): string {
-    const days = Math.floor(seconds / 86400);
-    const hours = Math.floor((seconds % 86400) / 3600);
-    if (days > 0) return `${days}d ${hours}h`;
-    return `${hours}h`;
+    return `${gb.toFixed(1)} GB`;
 }
 </script>
 

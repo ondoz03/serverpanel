@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
 import { Head, Link } from '@inertiajs/vue3';
 import { AppWindow, Globe, Lock, Plus, Server as ServerIcon } from '@lucide/vue';
+import { ref, onMounted } from 'vue';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import type { WebApplication } from '@/types';
 
 const props = defineProps<{ apps: WebApplication[] }>();
@@ -14,6 +13,7 @@ const allApps = ref<WebApplication[]>([...props.apps]);
 onMounted(() => {
     try {
         const local = localStorage.getItem('local_webapps');
+
         if (local) {
             const parsed = JSON.parse(local) as WebApplication[];
             const existingIds = new Set(props.apps.map(a => String(a.id)));
@@ -32,11 +32,15 @@ defineOptions({
 });
 
 function statusVariant(s: string): 'default' | 'destructive' | 'secondary' {
-    switch (s) { case 'active': return 'default'; case 'error': return 'destructive'; default: return 'secondary'; }
+    switch (s) {
+ case 'active': return 'default'; case 'error': return 'destructive'; default: return 'secondary'; 
+}
 }
 
 function envVariant(e: string): 'default' | 'outline' | 'secondary' {
-    switch (e) { case 'production': return 'default'; case 'staging': return 'outline'; default: return 'secondary'; }
+    switch (e) {
+ case 'production': return 'default'; case 'staging': return 'outline'; default: return 'secondary'; 
+}
 }
 </script>
 

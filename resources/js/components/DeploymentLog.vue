@@ -1,8 +1,8 @@
 <script setup lang="ts">
+import { GitCommit, GitBranch, Clock } from '@lucide/vue'
 import { ref, computed } from 'vue'
 import StatusBadge from '@/components/StatusBadge.vue'
 import TerminalOutput from '@/components/TerminalOutput.vue'
-import { GitCommit, GitBranch, Clock } from '@lucide/vue'
 
 interface Deployment {
   id: string | number

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Head, Link, router } from '@inertiajs/vue3';
 import { AlertCircle, ArrowLeft, Check, ChevronRight, Copy, Globe, Key, Lock, Monitor, Server as ServerIcon, Terminal } from '@lucide/vue';
+import { computed, ref } from 'vue';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -9,7 +10,6 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Separator } from '@/components/ui/separator';
 import servers from '@/routes/servers';
-import { computed, ref } from 'vue';
 
 defineOptions({
     layout: {
@@ -48,16 +48,31 @@ const errors = ref<Record<string, string>>({});
 
 function validateStep1(): boolean {
     errors.value = {};
-    if (!form.value.name.trim()) errors.value.name = 'Server name is required';
-    if (!form.value.ip_address.trim()) errors.value.ip_address = 'IP address is required';
-    else if (!/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/.test(form.value.ip_address)) errors.value.ip_address = 'Invalid IP address format';
-    if (!form.value.ssh_port || form.value.ssh_port < 1 || form.value.ssh_port > 65535) errors.value.ssh_port = 'Port must be 1-65535';
+
+    if (!form.value.name.trim()) {
+errors.value.name = 'Server name is required';
+}
+
+    if (!form.value.ip_address.trim()) {
+errors.value.ip_address = 'IP address is required';
+} else if (!/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/.test(form.value.ip_address)) {
+errors.value.ip_address = 'Invalid IP address format';
+}
+
+    if (!form.value.ssh_port || form.value.ssh_port < 1 || form.value.ssh_port > 65535) {
+errors.value.ssh_port = 'Port must be 1-65535';
+}
+
     return Object.keys(errors.value).length === 0;
 }
 
 function testConnection() {
     error.value = '';
-    if (!validateStep1()) return;
+
+    if (!validateStep1()) {
+return;
+}
+
     connecting.value = true;
     setTimeout(() => {
         connecting.value = false;
@@ -66,7 +81,10 @@ function testConnection() {
 }
 
 function nextStep() {
-    if (step.value === 1 && !validateStep1()) return;
+    if (step.value === 1 && !validateStep1()) {
+return;
+}
+
     step.value++;
 }
 

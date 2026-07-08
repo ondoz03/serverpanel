@@ -1,8 +1,9 @@
 import WebSocket from 'ws';
 import { config } from '../config';
+import type { CommandPayload } from '../executors';
+import { executeCommand } from '../executors';
 import { generateHmac } from '../utils/hmac';
 import { logger } from '../utils/logger';
-import { executeCommand, CommandPayload } from '../executors';
 
 export class AgentWsClient {
   private ws: WebSocket | null = null;
@@ -17,7 +18,10 @@ export class AgentWsClient {
   }
 
   public connect(): void {
-    if (this.isConnecting || this.ws) return;
+    if (this.isConnecting || this.ws) {
+return;
+}
+
     this.isConnecting = true;
 
     const wsUrl = this.getWsUrl();
@@ -68,14 +72,18 @@ export class AgentWsClient {
   }
 
   private getWsUrl(): string {
-    if (config.wsUrl) return config.wsUrl;
+    if (config.wsUrl) {
+return config.wsUrl;
+}
+
     try {
       const url = new URL(config.platformEndpoint);
       const host = url.hostname;
       const protocol = url.protocol === 'https:' ? 'wss:' : 'ws:';
       const port = host === 'localhost' || host === '127.0.0.1' ? '8080' : (url.port || (protocol === 'wss:' ? '443' : '80'));
+
       return `${protocol}//${host}:${port}`;
-    } catch (e) {
+    } catch {
       return 'ws://localhost:8080';
     }
   }
@@ -104,7 +112,10 @@ export class AgentWsClient {
   }
 
   private scheduleReconnect(): void {
-    if (this.reconnectTimeout) return;
+    if (this.reconnectTimeout) {
+return;
+}
+
     logger.info('Scheduling reconnect in 5 seconds...');
     this.reconnectTimeout = setTimeout(() => {
       this.reconnectTimeout = null;
@@ -130,8 +141,10 @@ export class AgentWsClient {
       if (payload) {
         // Run safety validation: reject command if issued_at is older than 30 seconds
         const age = Math.abs(Date.now() - (payload.issued_at * 1000));
+
         if (age > 30000) {
           logger.warn(`Rejected command [${payload.command_id}]: Replay attack suspected. Age was ${age}ms.`);
+
           return;
         }
         
@@ -144,7 +157,9 @@ export class AgentWsClient {
   }
 
   private async subscribeToChannel(): Promise<void> {
-    if (!this.ws || !this.socketId) return;
+    if (!this.ws || !this.socketId) {
+return;
+}
 
     try {
       // Sign the auth request: HMAC-SHA256(socket_id + channel_name, agent_token)
@@ -168,6 +183,7 @@ export class AgentWsClient {
 
       if (!response.ok) {
         const text = await response.text();
+
         throw new Error(`Auth failed with status ${response.status}: ${text}`);
       }
 

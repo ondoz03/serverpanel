@@ -35,19 +35,19 @@ import { useCurrentUrl } from '@/composables/useCurrentUrl';
 import { getInitials } from '@/composables/useInitials';
 import { toUrl } from '@/lib/utils';
 import { dashboard } from '@/routes';
-import servers from '@/routes/servers';
-import webApps from '@/routes/web-apps';
+import backups from '@/routes/backups';
+import cronJobs from '@/routes/cron-jobs';
 import databases from '@/routes/databases';
 import firewall from '@/routes/firewall';
-import cronJobs from '@/routes/cron-jobs';
-import backups from '@/routes/backups';
+import servers from '@/routes/servers';
+import webApps from '@/routes/web-apps';
 import type { BreadcrumbItem, NavItem } from '@/types';
 
 type Props = {
     breadcrumbs?: BreadcrumbItem[];
 };
 
-const props = withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<Props>(), {
     breadcrumbs: () => [],
 });
 

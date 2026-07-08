@@ -1,8 +1,19 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
 import { Head, Link, router } from '@inertiajs/vue3';
-import { Button } from '@/components/ui/button';
+import {
+    Trash2,
+    GitBranch,
+    Lock,
+    Server as ServerIcon,
+    Settings,
+    Activity,
+    Terminal,
+    ShieldAlert,
+} from '@lucide/vue';
+import { ref, computed } from 'vue';
+import { toast } from 'vue-sonner';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import {
     Card,
     CardContent,
@@ -10,8 +21,6 @@ import {
     CardTitle,
     CardDescription,
 } from '@/components/ui/card';
-import { toast } from 'vue-sonner';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
     Dialog,
     DialogContent,
@@ -29,17 +38,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from '@/components/ui/select';
-import {
-    ArrowLeft,
-    Trash2,
-    GitBranch,
-    Lock,
-    Server as ServerIcon,
-    Settings,
-    Activity,
-    Terminal,
-    ShieldAlert,
-} from '@lucide/vue';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 interface App {
     id: string | number;
@@ -68,15 +67,17 @@ defineOptions({
 });
 
 // Resolve data dari localStorage jika ada untuk demo statis
-const appData = (() => {
+const resolvedApp = computed(() => {
     if (String(props.app.id).startsWith('local-')) {
         try {
             const local = localStorage.getItem('local_webapps');
+
             if (local) {
                 const parsed = JSON.parse(local) as any[];
                 const found = parsed.find(
                     (a) => String(a.id) === String(props.app.id),
                 );
+
                 if (found) {
                     // Map stack/environment/php_version/web_server correctly if keys vary
                     return {
@@ -93,18 +94,17 @@ const appData = (() => {
             console.error('Failed to load local webapp in settings', e);
         }
     }
-    return props.app;
-})();
 
-const app = computed(() => appData);
+    return props.app;
+});
 
 // General Settings Form state
 const isSaving = ref(false);
-const appName = ref(appData.name);
-const domainInput = ref(appData.domain);
-const phpVersionInput = ref(appData.php_version);
-const webServerInput = ref(appData.web_server);
-const documentRootInput = ref(appData.document_root);
+const appName = ref(resolvedApp.value.name);
+const domainInput = ref(resolvedApp.value.domain);
+const phpVersionInput = ref(resolvedApp.value.php_version);
+const webServerInput = ref(resolvedApp.value.web_server);
+const documentRootInput = ref(resolvedApp.value.document_root);
 
 // Nginx Config state
 const isSavingNginx = ref(false);
@@ -168,6 +168,7 @@ function confirmDelete() {
 function deleteApp() {
     if (deleteConfirmationText.value !== props.app.name) {
         toast.error('Please type the application name correctly to confirm.');
+
         return;
     }
 
@@ -194,51 +195,51 @@ function deleteApp() {
             >
             <span>/</span>
             <Link
-                :href="`/web-apps/${app.id}`"
+                :href="`/web-apps/${resolvedApp.id}`"
                 class="transition-colors hover:text-foreground"
-                >{{ app.name }}</Link
+                >{{ resolvedApp.name }}</Link
             >
             <span>/</span>
             <span class="font-medium text-foreground">Settings</span>
         </div>
 
         <div>
-            <h1 class="text-2xl font-bold tracking-tight">{{ app.name }}</h1>
-            <p class="text-muted-foreground">{{ app.domain }}</p>
+            <h1 class="text-2xl font-bold tracking-tight">{{ resolvedApp.name }}</h1>
+            <p class="text-muted-foreground">{{ resolvedApp.domain }}</p>
         </div>
 
         <Tabs default-value="settings" class="space-y-4">
             <TabsList>
                 <TabsTrigger value="overview" as-child>
-                    <Link :href="`/web-apps/${app.id}`">
+                    <Link :href="`/web-apps/${resolvedApp.id}`">
                         <Activity class="mr-2 h-4 w-4" />
                         Overview
                     </Link>
                 </TabsTrigger>
                 <TabsTrigger
-                    v-if="app.stack === 'laravel'"
+                    v-if="resolvedApp.stack === 'laravel'"
                     value="laravel"
                     as-child
                 >
-                    <Link :href="`/web-apps/${app.id}`">
+                    <Link :href="`/web-apps/${resolvedApp.id}`">
                         <Terminal class="mr-2 h-4 w-4" />
                         Laravel
                     </Link>
                 </TabsTrigger>
                 <TabsTrigger value="ssl" as-child>
-                    <Link :href="`/web-apps/${app.id}/ssl`">
+                    <Link :href="`/web-apps/${resolvedApp.id}/ssl`">
                         <Lock class="mr-2 h-4 w-4" />
                         SSL
                     </Link>
                 </TabsTrigger>
                 <TabsTrigger value="env" as-child>
-                    <Link :href="`/web-apps/${app.id}/env`">
+                    <Link :href="`/web-apps/${resolvedApp.id}/env`">
                         <ServerIcon class="mr-2 h-4 w-4" />
                         Environment Variables
                     </Link>
                 </TabsTrigger>
                 <TabsTrigger value="git" as-child>
-                    <Link :href="`/web-apps/${app.id}/git`">
+                    <Link :href="`/web-apps/${resolvedApp.id}/git`">
                         <GitBranch class="mr-2 h-4 w-4" />
                         Git
                     </Link>
@@ -323,21 +324,21 @@ function deleteApp() {
                                     >System User</span
                                 >
                                 <span class="font-mono text-xs">{{
-                                    app.system_user
+                                    resolvedApp.system_user
                                 }}</span>
                             </div>
                             <div>
                                 <span class="block font-medium text-foreground"
                                     >Stack Type</span
                                 >
-                                <Badge variant="outline">{{ app.stack }}</Badge>
+                                <Badge variant="outline">{{ resolvedApp.stack }}</Badge>
                             </div>
                             <div>
                                 <span class="block font-medium text-foreground"
                                     >Environment</span
                                 >
                                 <Badge variant="outline">{{
-                                    app.environment
+                                    resolvedApp.environment
                                 }}</Badge>
                             </div>
                         </div>
@@ -401,7 +402,7 @@ function deleteApp() {
                                     Delete this application
                                 </p>
                                 <p class="text-muted-foreground">
-                                    Permanently delete {{ app.name }} and all of
+                                    Permanently delete {{ resolvedApp.name }} and all of
                                     its data.
                                 </p>
                             </div>
@@ -433,7 +434,7 @@ function deleteApp() {
                     </DialogTitle>
                     <DialogDescription>
                         This action cannot be undone. This will permanently
-                        delete <strong>{{ app.name }}</strong
+                        delete <strong>{{ resolvedApp.name }}</strong
                         >, its logs, and its configurations from the agent.
                     </DialogDescription>
                 </DialogHeader>
@@ -444,7 +445,7 @@ function deleteApp() {
                             >Please type
                             <span
                                 class="rounded bg-muted px-1.5 py-0.5 font-mono text-xs font-semibold"
-                                >{{ app.name }}</span
+                                >{{ resolvedApp.name }}</span
                             >
                             to confirm:</Label
                         >
@@ -466,7 +467,7 @@ function deleteApp() {
                     <Button
                         variant="destructive"
                         :disabled="
-                            isDeleting || deleteConfirmationText !== app.name
+                            isDeleting || deleteConfirmationText !== resolvedApp.name
                         "
                         @click="deleteApp"
                     >

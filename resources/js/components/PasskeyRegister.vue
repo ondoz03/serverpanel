@@ -14,6 +14,7 @@ const getDefaultPasskeyName = () => {
     if (typeof navigator === 'undefined') {
         return '';
     }
+
     const ua = navigator.userAgent;
 
     const browser = [

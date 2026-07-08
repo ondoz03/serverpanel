@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { router } from '@inertiajs/vue3';
 import { computed, onMounted, ref } from 'vue';
-import { Skeleton } from '@/components/ui/skeleton';
 import { SidebarInset } from '@/components/ui/sidebar';
+import { Skeleton } from '@/components/ui/skeleton';
 import type { AppVariant } from '@/types';
 
 type Props = {
@@ -18,8 +18,12 @@ const className = computed(() => props.class);
 const isLoading = ref(false);
 
 onMounted(() => {
-    router.on('start', () => { isLoading.value = true; });
-    router.on('finish', () => { isLoading.value = false; });
+    router.on('start', () => {
+ isLoading.value = true; 
+});
+    router.on('finish', () => {
+ isLoading.value = false; 
+});
 });
 </script>
 

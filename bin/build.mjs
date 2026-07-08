@@ -19,12 +19,25 @@ proc.stderr.on('data', (chunk) => {
     const filtered = lines.filter((l) => {
         const clean = stripAnsi(l).trimStart();
         const trimmed = clean.replace(/\x1B\[\d+m/g, '').trim();
-        if (trimmed.startsWith('Found ') && trimmed.includes('warnings while optimizing')) return false;
-        if (trimmed.startsWith('Issue #')) return false;
-        if (/^[│┆]/.test(stripAnsi(l).trimStart())) return false;
+
+        if (trimmed.startsWith('Found ') && trimmed.includes('warnings while optimizing')) {
+return false;
+}
+
+        if (trimmed.startsWith('Issue #')) {
+return false;
+}
+
+        if (/^[│┆]/.test(stripAnsi(l).trimStart())) {
+return false;
+}
+
         return true;
     });
-    if (filtered.length > 0) process.stderr.write(filtered.join('\n'));
+
+    if (filtered.length > 0) {
+process.stderr.write(filtered.join('\n'));
+}
 });
 
 proc.on('exit', (code) => process.exit(code ?? 1));

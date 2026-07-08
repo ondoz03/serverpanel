@@ -1,18 +1,18 @@
 <script setup lang="ts">
 import { Head, Link, router } from '@inertiajs/vue3';
 import { Activity, AppWindow, ArrowLeft, Copy, Database, HardDrive, MemoryStick, Play, RefreshCw, ScrollText, Server as ServerIcon, Settings, Shield, Terminal, Timer, RotateCw } from '@lucide/vue';
+import { onMounted, onUnmounted, computed } from 'vue';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
-import servers from '@/routes/servers';
-import webApps from '@/routes/web-apps';
+import { useClipboard } from '@/composables/useClipboard';
+import cronJobs from '@/routes/cron-jobs';
 import databases from '@/routes/databases';
 import firewall from '@/routes/firewall';
-import cronJobs from '@/routes/cron-jobs';
+import servers from '@/routes/servers';
+import webApps from '@/routes/web-apps';
 import type { Server } from '@/types';
-import { onMounted, onUnmounted, computed } from 'vue';
-import { useClipboard } from '@/composables/useClipboard';
 
 defineOptions({
     layout: {
@@ -30,8 +30,12 @@ const props = defineProps<{
 const { copied, copy } = useClipboard();
 
 const installScript = computed(() => {
-    if (typeof window === 'undefined') return '';
+    if (typeof window === 'undefined') {
+return '';
+}
+
     const endpoint = window.location.origin;
+
     return `curl -fsSL ${endpoint}/install.sh | bash -s -- --token=${props.server.agent_token} --endpoint=${endpoint}`;
 });
 
@@ -48,24 +52,37 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
-    if (interval) clearInterval(interval);
+    if (interval) {
+clearInterval(interval);
+}
 });
 
 function formatBytes(bytes: number): string {
     const gb = bytes / (1024 * 1024 * 1024);
+
     return `${gb.toFixed(1)} GB`;
 }
 
 function formatUptime(seconds: number): string {
     const days = Math.floor(seconds / 86400);
     const hours = Math.floor((seconds % 86400) / 3600);
-    if (days > 0) return `${days}d ${hours}h`;
+
+    if (days > 0) {
+return `${days}d ${hours}h`;
+}
+
     return `${hours}h`;
 }
 
 function usageColor(percent: number): string {
-    if (percent > 90) return 'bg-red-500';
-    if (percent > 70) return 'bg-yellow-500';
+    if (percent > 90) {
+return 'bg-red-500';
+}
+
+    if (percent > 70) {
+return 'bg-yellow-500';
+}
+
     return 'bg-green-500';
 }
 

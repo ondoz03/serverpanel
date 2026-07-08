@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref, onUnmounted, watch, nextTick } from "vue"
 import { ChevronDown, ChevronUp, Trash2 } from "@lucide/vue"
+import { ref, onUnmounted, watch, nextTick } from "vue"
 import { Button } from "@/components/ui/button"
 
 const props = withDefaults(defineProps<{
@@ -22,13 +22,17 @@ const maxVisible = 20
 let intervalId: ReturnType<typeof setInterval> | undefined
 
 function start() {
-  if (!props.stream || visibleCount.value >= props.lines.length) return
+  if (!props.stream || visibleCount.value >= props.lines.length) {
+return
+}
+
   stop()
   intervalId = setInterval(() => {
     visibleCount.value++
     nextTick(() => {
       scrollToBottom()
     })
+
     if (visibleCount.value >= props.lines.length) {
       stop()
       emit("complete")
@@ -51,7 +55,10 @@ function clear() {
 function scrollToBottom() {
   nextTick(() => {
     const el = terminalRef.value
-    if (el) el.scrollTop = el.scrollHeight
+
+    if (el) {
+el.scrollTop = el.scrollHeight
+}
   })
 }
 
@@ -76,6 +83,7 @@ const displayLines = ref<string[]>([])
 
 watch([visibleCount, collapsed], () => {
   const all = props.lines.slice(0, visibleCount.value)
+
   if (collapsed.value && all.length > maxVisible) {
     displayLines.value = all.slice(-maxVisible)
   } else {

@@ -15,9 +15,18 @@ defineOptions({
 })
 
 function statusVariant(status: string): 'success' | 'warning' | 'destructive' | 'secondary' {
-  if (status === 'completed') return 'success'
-  if (status === 'running') return 'warning'
-  if (status === 'failed') return 'destructive'
+  if (status === 'completed') {
+return 'success'
+}
+
+  if (status === 'running') {
+return 'warning'
+}
+
+  if (status === 'failed') {
+return 'destructive'
+}
+
   return 'secondary'
 }
 </script>

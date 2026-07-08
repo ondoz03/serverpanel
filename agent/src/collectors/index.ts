@@ -7,6 +7,7 @@ import { logger } from '../utils/logger';
 export async function collectAndPushMetrics(): Promise<void> {
   if (!config.serverId || !config.agentToken || !config.platformEndpoint) {
     logger.warn('Metrics skip: Missing agent configuration.');
+
     return;
   }
 
@@ -54,6 +55,7 @@ export async function collectAndPushMetrics(): Promise<void> {
 
     const services = servicesToCheck.map(s => {
       const proc = activeProcesses.find(p => p.name.toLowerCase().includes(s.processName.toLowerCase()));
+
       return {
         name: s.name,
         status: proc ? ('active' as const) : ('inactive' as const),

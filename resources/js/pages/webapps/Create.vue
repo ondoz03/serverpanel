@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import { Head, Link, router } from '@inertiajs/vue3';
 import { ArrowLeft, RefreshCw } from '@lucide/vue';
+import { ref } from 'vue';
+import { toast } from 'vue-sonner';
 import { Button } from '@/components/ui/button';
 import {
     Card,
@@ -19,8 +20,6 @@ import {
     SelectTrigger,
     SelectValue,
 } from '@/components/ui/select';
-import { Separator } from '@/components/ui/separator';
-import { toast } from 'vue-sonner';
 
 defineOptions({
     layout: {
@@ -42,10 +41,13 @@ const environmentType = ref('production');
 function handleSubmit() {
     if (!appName.value) {
         toast.error('Please enter an application name.');
+
         return;
     }
+
     if (!domainInput.value) {
         toast.error('Please enter a domain name.');
+
         return;
     }
 

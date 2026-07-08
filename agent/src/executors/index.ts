@@ -31,6 +31,7 @@ export async function executeCommand(payload: CommandPayload): Promise<void> {
     switch (action) {
       case 'server.provision': {
         const phpVersion = params.php_version || '8.3';
+
         if (isWindows) {
           // Simulate LEMP installation on Windows development machines
           output = `[win32 simulation] Updating package repository...\n[win32 simulation] Registering PHP PPA repository...\n[win32 simulation] Installing Nginx, MySQL, PHP ${phpVersion}, Redis, Fail2ban, Composer...\n[win32 simulation] Setting up configurations...\n[win32 simulation] LEMP stack installation completed.`;
@@ -60,6 +61,7 @@ export async function executeCommand(payload: CommandPayload): Promise<void> {
             success = false;
           }
         }
+
         break;
       }
 
@@ -67,20 +69,25 @@ export async function executeCommand(payload: CommandPayload): Promise<void> {
       case 'service.start':
       case 'service.stop': {
         const service = params.service;
+
         if (!service) {
           throw new Error('Service name is required.');
         }
+
         const serviceAction = action.split('.')[1];
+
         if (isWindows) {
           output = `[win32 simulation] Executed sudo systemctl ${serviceAction} ${service} successfully.`;
           success = true;
         } else {
           try {
             let systemdName = service;
+
             if (service === 'php') {
               // Default to php8.3-fpm or search for active fpm service
               systemdName = 'php8.3-fpm'; 
             }
+
             const { stdout, stderr } = await execAsync(`sudo systemctl ${serviceAction} ${systemdName}`);
             output = stdout + '\n' + stderr;
             success = true;
@@ -91,14 +98,17 @@ export async function executeCommand(payload: CommandPayload): Promise<void> {
             success = false;
           }
         }
+
         break;
       }
 
       case 'shell.exec': {
         const command = params.command;
+
         if (!command) {
           throw new Error('Command string is required.');
         }
+
         // Basic safety barrier
         if (command.includes('rm -rf /') || command.includes('rm -rf /*')) {
           throw new Error('Security violation: Forbidden command sequence.');
@@ -114,6 +124,7 @@ export async function executeCommand(payload: CommandPayload): Promise<void> {
           errorMessage = e.message;
           success = false;
         }
+
         break;
       }
 
