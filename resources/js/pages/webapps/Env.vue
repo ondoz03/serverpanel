@@ -1,16 +1,6 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
 import { Head, Link } from '@inertiajs/vue3'
-import { Button } from '@/components/ui/button'
-import { toast } from 'vue-sonner'
 import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from '@/components/ui/tabs'
-import {
-  Globe,
   Lock,
   GitBranch,
   Activity,
@@ -18,7 +8,16 @@ import {
   Server as ServerIcon,
   Terminal,
 } from '@lucide/vue'
+import { ref, computed } from 'vue'
+import { toast } from 'vue-sonner'
 import EnvEditor from '@/components/EnvEditor.vue'
+import { Button } from '@/components/ui/button'
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from '@/components/ui/tabs'
 
 interface Variable {
   key: string
@@ -52,9 +51,11 @@ const app = computed(() => {
   if (String(props.app.id).startsWith('local-')) {
     try {
       const local = localStorage.getItem('local_webapps')
+
       if (local) {
         const parsed = JSON.parse(local) as any[]
         const found = parsed.find(a => String(a.id) === String(props.app.id))
+
         if (found) {
           return { ...props.app, ...found }
         }
@@ -63,6 +64,7 @@ const app = computed(() => {
       console.error('Failed to load local webapp in env details', e)
     }
   }
+
   return props.app
 })
 

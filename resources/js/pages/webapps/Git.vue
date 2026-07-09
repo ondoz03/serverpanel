@@ -1,16 +1,12 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
 import { Head, Link } from '@inertiajs/vue3'
-import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { GitBranch, GitCommit, RefreshCw, Lock, Server as ServerIcon, Settings, Activity, Terminal } from '@lucide/vue'
+import { ref, computed } from 'vue'
 import { toast } from 'vue-sonner'
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from '@/components/ui/tabs'
+import DeploymentLog from '@/components/DeploymentLog.vue'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import {
   Dialog,
   DialogContent,
@@ -23,8 +19,12 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
-import { GitBranch, GitCommit, ArrowLeft, RefreshCw, Lock, Server as ServerIcon, Settings, Activity, Terminal } from '@lucide/vue'
-import DeploymentLog from '@/components/DeploymentLog.vue'
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from '@/components/ui/tabs'
 
 interface Deployment {
   id: string | number
@@ -72,9 +72,11 @@ const app = computed(() => {
   if (String(props.app.id).startsWith('local-')) {
     try {
       const local = localStorage.getItem('local_webapps')
+
       if (local) {
         const parsed = JSON.parse(local) as any[]
         const found = parsed.find(a => String(a.id) === String(props.app.id))
+
         if (found) {
           return { ...props.app, ...found }
         }
@@ -83,6 +85,7 @@ const app = computed(() => {
       console.error('Failed to load local webapp in git details', e)
     }
   }
+
   return props.app
 })
 
@@ -188,6 +191,7 @@ function triggerDeploy() {
       
       // Update deployment status in history
       const dep = deployHistory.value.find(d => d.id === newDepId)
+
       if (dep) {
         dep.status = 'success'
         dep.finished_at = new Date().toISOString()
@@ -202,6 +206,7 @@ function triggerDeploy() {
 function viewLog(dep: RecentDeployment, isNew = false) {
   selectedDeployment.value = dep
   isLogOpen.value = true
+
   if (isNew) {
     logLines.value = []
   } else {
@@ -212,17 +217,38 @@ function viewLog(dep: RecentDeployment, isNew = false) {
 }
 
 function statusVariant(status: string): 'default' | 'destructive' | 'secondary' | 'outline' {
-  if (status === 'success' || status === 'successful') return 'default'
-  if (status === 'failed' || status === 'failure') return 'destructive'
-  if (status === 'deploying' || status === 'pending') return 'secondary'
+  if (status === 'success' || status === 'successful') {
+return 'default'
+}
+
+  if (status === 'failed' || status === 'failure') {
+return 'destructive'
+}
+
+  if (status === 'deploying' || status === 'pending') {
+return 'secondary'
+}
+
   return 'outline'
 }
 
 const statusLabel = (status: string): string => {
-  if (status === 'success' || status === 'successful') return 'Success'
-  if (status === 'failed' || status === 'failure') return 'Failed'
-  if (status === 'deploying') return 'Deploying'
-  if (status === 'pending') return 'Pending'
+  if (status === 'success' || status === 'successful') {
+return 'Success'
+}
+
+  if (status === 'failed' || status === 'failure') {
+return 'Failed'
+}
+
+  if (status === 'deploying') {
+return 'Deploying'
+}
+
+  if (status === 'pending') {
+return 'Pending'
+}
+
   return status
 }
 

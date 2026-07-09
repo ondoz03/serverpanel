@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { Head, Link } from '@inertiajs/vue3';
 import { ArrowLeft, CheckCircle2, Circle, Terminal } from '@lucide/vue';
+import { onMounted, ref } from 'vue';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import servers from '@/routes/servers';
 import type { Server } from '@/types';
-import { onMounted, ref } from 'vue';
 
 defineOptions({
     layout: {
@@ -17,7 +17,7 @@ defineOptions({
     },
 });
 
-const props = defineProps<{
+defineProps<{
     server: Server;
 }>();
 
@@ -58,7 +58,12 @@ const provisioningSteps = [
 function addLog(entry: { level: 'info' | 'success' | 'error' | 'pending'; message: string; timestamp: string }) {
     logs.value.push(entry);
     const el = document.getElementById('log-scroll');
-    if (el) setTimeout(() => { el.scrollTop = el.scrollHeight; }, 50);
+
+    if (el) {
+setTimeout(() => {
+ el.scrollTop = el.scrollHeight; 
+}, 50);
+}
 }
 
 let index = 0;
@@ -75,6 +80,7 @@ function tick() {
     if (index >= provisioningSteps.length) {
         completed.value = true;
         progress.value = 100;
+
         return;
     }
 

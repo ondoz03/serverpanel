@@ -1,153 +1,68 @@
 {
-  "node_modules/vue-sonner/lib/index.css": [],
-  "resources/js/actions/App/Http/Controllers/Settings/ProfileController.ts": [
-    "/build/assets/Profile-BHCwBBTX.js"
-  ],
-  "resources/js/actions/App/Http/Controllers/Settings/SecurityController.ts": [
-    "/build/assets/Security-v1BsDBGK.js"
-  ],
-  "resources/js/actions/Laravel/Passkeys/Http/Controllers/PasskeyConfirmationController.ts": [
-    "/build/assets/ConfirmPassword-C6uijzza.js"
-  ],
-  "resources/js/actions/Laravel/Passkeys/Http/Controllers/PasskeyRegistrationController.ts": [
-    "/build/assets/Security-v1BsDBGK.js"
-  ],
-  "resources/js/app.ts": [],
-  "resources/js/components/AlertError.vue": [
-    "/build/assets/Security-v1BsDBGK.js"
-  ],
-  "resources/js/components/AlertError.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/Security-v1BsDBGK.js"
-  ],
+  "\u0000rolldown/runtime.js": [],
+  "resources/js/actions/App/Http/Controllers/Settings/ProfileController.ts": [],
+  "resources/js/actions/App/Http/Controllers/Settings/SecurityController.ts": [],
+  "resources/js/actions/Laravel/Passkeys/Http/Controllers/PasskeyConfirmationController.ts": [],
+  "resources/js/actions/Laravel/Passkeys/Http/Controllers/PasskeyRegistrationController.ts": [],
+  "resources/js/components/AlertError.vue": [],
+  "resources/js/components/AlertError.vue?vue&type=script&setup=true&lang.ts": [],
   "resources/js/components/AppContent.vue": [],
   "resources/js/components/AppContent.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/AppHeader.vue": [],
+  "resources/js/components/AppHeader.vue?vue&type=script&setup=true&lang.ts": [],
   "resources/js/components/AppLogo.vue": [],
   "resources/js/components/AppLogo.vue?vue&type=script&setup=true&lang.ts": [],
   "resources/js/components/AppLogoIcon.vue": [],
   "resources/js/components/AppLogoIcon.vue?vue&type=script&setup=true&lang.ts": [],
   "resources/js/components/AppShell.vue": [],
   "resources/js/components/AppShell.vue?vue&type=script&setup=true&lang.ts": [],
-  "resources/js/components/AppSidebar.vue": [],
-  "resources/js/components/AppSidebar.vue?vue&type=script&setup=true&lang.ts": [],
-  "resources/js/components/AppSidebarHeader.vue": [],
-  "resources/js/components/AppSidebarHeader.vue?vue&type=script&setup=true&lang.ts": [],
-  "resources/js/components/AppearanceTabs.vue": [
-    "/build/assets/Appearance-UvhpP3sW.js"
-  ],
-  "resources/js/components/AppearanceTabs.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/Appearance-UvhpP3sW.js"
-  ],
+  "resources/js/components/AppearanceTabs.vue": [],
+  "resources/js/components/AppearanceTabs.vue?vue&type=script&setup=true&lang.ts": [],
   "resources/js/components/Breadcrumbs.vue": [],
   "resources/js/components/Breadcrumbs.vue?vue&type=script&setup=true&lang.ts": [],
-  "resources/js/components/DeleteUser.vue": [
-    "/build/assets/Profile-BHCwBBTX.js"
-  ],
-  "resources/js/components/DeleteUser.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/Profile-BHCwBBTX.js"
-  ],
-  "resources/js/components/Heading.vue": [
-    "/build/assets/Heading-DS5EZX3A.js"
-  ],
-  "resources/js/components/Heading.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/Heading-DS5EZX3A.js"
-  ],
-  "resources/js/components/InputError.vue": [
-    "/build/assets/InputError-CH3UMoP5.js"
-  ],
-  "resources/js/components/InputError.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/InputError-CH3UMoP5.js"
-  ],
-  "resources/js/components/ManagePasskeys.vue": [
-    "/build/assets/Security-v1BsDBGK.js"
-  ],
-  "resources/js/components/ManagePasskeys.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/Security-v1BsDBGK.js"
-  ],
-  "resources/js/components/ManageTwoFactor.vue": [
-    "/build/assets/Security-v1BsDBGK.js"
-  ],
-  "resources/js/components/ManageTwoFactor.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/Security-v1BsDBGK.js"
-  ],
-  "resources/js/components/NavFooter.vue": [],
-  "resources/js/components/NavFooter.vue?vue&type=script&setup=true&lang.ts": [],
-  "resources/js/components/NavMain.vue": [],
-  "resources/js/components/NavMain.vue?vue&type=script&setup=true&lang.ts": [],
-  "resources/js/components/NavUser.vue": [],
-  "resources/js/components/NavUser.vue?vue&type=script&setup=true&lang.ts": [],
-  "resources/js/components/PasskeyItem.vue": [
-    "/build/assets/Security-v1BsDBGK.js"
-  ],
-  "resources/js/components/PasskeyItem.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/Security-v1BsDBGK.js"
-  ],
-  "resources/js/components/PasskeyRegister.vue": [
-    "/build/assets/Security-v1BsDBGK.js"
-  ],
-  "resources/js/components/PasskeyRegister.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/Security-v1BsDBGK.js"
-  ],
-  "resources/js/components/PasskeyVerify.vue": [
-    "/build/assets/PasskeyVerify-C9_GbWxj.js"
-  ],
-  "resources/js/components/PasskeyVerify.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/PasskeyVerify-C9_GbWxj.js"
-  ],
-  "resources/js/components/PasswordInput.vue": [
-    "/build/assets/PasswordInput-D2x5rKA1.js"
-  ],
-  "resources/js/components/PasswordInput.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/PasswordInput-D2x5rKA1.js"
-  ],
-  "resources/js/components/PlaceholderPattern.vue": [
-    "/build/assets/Dashboard-D3t9VLMO.js"
-  ],
-  "resources/js/components/PlaceholderPattern.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/Dashboard-D3t9VLMO.js"
-  ],
-  "resources/js/components/TextLink.vue": [
-    "/build/assets/TextLink-esQBwqY1.js"
-  ],
-  "resources/js/components/TextLink.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/TextLink-esQBwqY1.js"
-  ],
-  "resources/js/components/TwoFactorRecoveryCodes.vue": [
-    "/build/assets/Security-v1BsDBGK.js"
-  ],
-  "resources/js/components/TwoFactorRecoveryCodes.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/Security-v1BsDBGK.js"
-  ],
-  "resources/js/components/TwoFactorSetupModal.vue": [
-    "/build/assets/Security-v1BsDBGK.js"
-  ],
-  "resources/js/components/TwoFactorSetupModal.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/Security-v1BsDBGK.js"
-  ],
+  "resources/js/components/DeleteUser.vue": [],
+  "resources/js/components/DeleteUser.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/DeploymentLog.vue": [],
+  "resources/js/components/DeploymentLog.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/EnvEditor.vue": [],
+  "resources/js/components/EnvEditor.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/Heading.vue": [],
+  "resources/js/components/Heading.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/InputError.vue": [],
+  "resources/js/components/InputError.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ManagePasskeys.vue": [],
+  "resources/js/components/ManagePasskeys.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ManageTwoFactor.vue": [],
+  "resources/js/components/ManageTwoFactor.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/PasskeyItem.vue": [],
+  "resources/js/components/PasskeyItem.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/PasskeyRegister.vue": [],
+  "resources/js/components/PasskeyRegister.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/PasskeyVerify.vue": [],
+  "resources/js/components/PasskeyVerify.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/PasswordInput.vue": [],
+  "resources/js/components/PasswordInput.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/StatusBadge.vue": [],
+  "resources/js/components/StatusBadge.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/TerminalOutput.vue": [],
+  "resources/js/components/TerminalOutput.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/TextLink.vue": [],
+  "resources/js/components/TextLink.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/TwoFactorRecoveryCodes.vue": [],
+  "resources/js/components/TwoFactorRecoveryCodes.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/TwoFactorSetupModal.vue": [],
+  "resources/js/components/TwoFactorSetupModal.vue?vue&type=script&setup=true&lang.ts": [],
   "resources/js/components/UserInfo.vue": [],
   "resources/js/components/UserInfo.vue?vue&type=script&setup=true&lang.ts": [],
   "resources/js/components/UserMenuContent.vue": [],
   "resources/js/components/UserMenuContent.vue?vue&type=script&setup=true&lang.ts": [],
-  "resources/js/components/ui/alert/Alert.vue": [
-    "/build/assets/Security-v1BsDBGK.js"
-  ],
-  "resources/js/components/ui/alert/Alert.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/Security-v1BsDBGK.js"
-  ],
-  "resources/js/components/ui/alert/AlertDescription.vue": [
-    "/build/assets/Security-v1BsDBGK.js"
-  ],
-  "resources/js/components/ui/alert/AlertDescription.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/Security-v1BsDBGK.js"
-  ],
-  "resources/js/components/ui/alert/AlertTitle.vue": [
-    "/build/assets/Security-v1BsDBGK.js"
-  ],
-  "resources/js/components/ui/alert/AlertTitle.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/Security-v1BsDBGK.js"
-  ],
-  "resources/js/components/ui/alert/index.ts": [
-    "/build/assets/Security-v1BsDBGK.js"
-  ],
+  "resources/js/components/ui/alert/Alert.vue": [],
+  "resources/js/components/ui/alert/Alert.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/alert/AlertDescription.vue": [],
+  "resources/js/components/ui/alert/AlertDescription.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/alert/AlertTitle.vue": [],
+  "resources/js/components/ui/alert/AlertTitle.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/alert/index.ts": [],
   "resources/js/components/ui/avatar/Avatar.vue": [],
   "resources/js/components/ui/avatar/Avatar.vue?vue&type=script&setup=true&lang.ts": [],
   "resources/js/components/ui/avatar/AvatarFallback.vue": [],
@@ -155,15 +70,9 @@
   "resources/js/components/ui/avatar/AvatarImage.vue": [],
   "resources/js/components/ui/avatar/AvatarImage.vue?vue&type=script&setup=true&lang.ts": [],
   "resources/js/components/ui/avatar/index.ts": [],
-  "resources/js/components/ui/badge/Badge.vue": [
-    "/build/assets/Index-PGlzILeE.js"
-  ],
-  "resources/js/components/ui/badge/Badge.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/Index-PGlzILeE.js"
-  ],
-  "resources/js/components/ui/badge/index.ts": [
-    "/build/assets/Index-PGlzILeE.js"
-  ],
+  "resources/js/components/ui/badge/Badge.vue": [],
+  "resources/js/components/ui/badge/Badge.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/badge/index.ts": [],
   "resources/js/components/ui/breadcrumb/Breadcrumb.vue": [],
   "resources/js/components/ui/breadcrumb/Breadcrumb.vue?vue&type=script&setup=true&lang.ts": [],
   "resources/js/components/ui/breadcrumb/BreadcrumbEllipsis.vue": [],
@@ -179,132 +88,48 @@
   "resources/js/components/ui/breadcrumb/BreadcrumbSeparator.vue": [],
   "resources/js/components/ui/breadcrumb/BreadcrumbSeparator.vue?vue&type=script&setup=true&lang.ts": [],
   "resources/js/components/ui/breadcrumb/index.ts": [],
-  "resources/js/components/ui/button/Button.vue": [
-    "/build/assets/button-DHJnCoso.js"
-  ],
-  "resources/js/components/ui/button/Button.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/button-DHJnCoso.js"
-  ],
-  "resources/js/components/ui/button/index.ts": [
-    "/build/assets/button-DHJnCoso.js"
-  ],
-  "resources/js/components/ui/card/Card.vue": [
-    "/build/assets/card-DQ1WCodk.js"
-  ],
-  "resources/js/components/ui/card/Card.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/card-DQ1WCodk.js"
-  ],
-  "resources/js/components/ui/card/CardAction.vue": [
-    "/build/assets/card-DQ1WCodk.js"
-  ],
-  "resources/js/components/ui/card/CardAction.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/card-DQ1WCodk.js"
-  ],
-  "resources/js/components/ui/card/CardContent.vue": [
-    "/build/assets/card-DQ1WCodk.js"
-  ],
-  "resources/js/components/ui/card/CardContent.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/card-DQ1WCodk.js"
-  ],
-  "resources/js/components/ui/card/CardDescription.vue": [
-    "/build/assets/card-DQ1WCodk.js"
-  ],
-  "resources/js/components/ui/card/CardDescription.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/card-DQ1WCodk.js"
-  ],
-  "resources/js/components/ui/card/CardFooter.vue": [
-    "/build/assets/card-DQ1WCodk.js"
-  ],
-  "resources/js/components/ui/card/CardFooter.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/card-DQ1WCodk.js"
-  ],
-  "resources/js/components/ui/card/CardHeader.vue": [
-    "/build/assets/card-DQ1WCodk.js"
-  ],
-  "resources/js/components/ui/card/CardHeader.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/card-DQ1WCodk.js"
-  ],
-  "resources/js/components/ui/card/CardTitle.vue": [
-    "/build/assets/card-DQ1WCodk.js"
-  ],
-  "resources/js/components/ui/card/CardTitle.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/card-DQ1WCodk.js"
-  ],
-  "resources/js/components/ui/card/index.ts": [
-    "/build/assets/card-DQ1WCodk.js"
-  ],
-  "resources/js/components/ui/checkbox/Checkbox.vue": [
-    "/build/assets/Login-BXTbSPJy.js"
-  ],
-  "resources/js/components/ui/checkbox/Checkbox.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/Login-BXTbSPJy.js"
-  ],
-  "resources/js/components/ui/checkbox/index.ts": [
-    "/build/assets/Login-BXTbSPJy.js"
-  ],
-  "resources/js/components/ui/dialog/Dialog.vue": [
-    "/build/assets/dialog-DANPXjKB.js"
-  ],
-  "resources/js/components/ui/dialog/Dialog.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/dialog-DANPXjKB.js"
-  ],
-  "resources/js/components/ui/dialog/DialogClose.vue": [
-    "/build/assets/dialog-DANPXjKB.js"
-  ],
-  "resources/js/components/ui/dialog/DialogClose.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/dialog-DANPXjKB.js"
-  ],
-  "resources/js/components/ui/dialog/DialogContent.vue": [
-    "/build/assets/dialog-DANPXjKB.js"
-  ],
-  "resources/js/components/ui/dialog/DialogContent.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/dialog-DANPXjKB.js"
-  ],
-  "resources/js/components/ui/dialog/DialogDescription.vue": [
-    "/build/assets/dialog-DANPXjKB.js"
-  ],
-  "resources/js/components/ui/dialog/DialogDescription.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/dialog-DANPXjKB.js"
-  ],
-  "resources/js/components/ui/dialog/DialogFooter.vue": [
-    "/build/assets/dialog-DANPXjKB.js"
-  ],
-  "resources/js/components/ui/dialog/DialogFooter.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/dialog-DANPXjKB.js"
-  ],
-  "resources/js/components/ui/dialog/DialogHeader.vue": [
-    "/build/assets/dialog-DANPXjKB.js"
-  ],
-  "resources/js/components/ui/dialog/DialogHeader.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/dialog-DANPXjKB.js"
-  ],
-  "resources/js/components/ui/dialog/DialogOverlay.vue": [
-    "/build/assets/dialog-DANPXjKB.js"
-  ],
-  "resources/js/components/ui/dialog/DialogOverlay.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/dialog-DANPXjKB.js"
-  ],
-  "resources/js/components/ui/dialog/DialogScrollContent.vue": [
-    "/build/assets/dialog-DANPXjKB.js"
-  ],
-  "resources/js/components/ui/dialog/DialogScrollContent.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/dialog-DANPXjKB.js"
-  ],
-  "resources/js/components/ui/dialog/DialogTitle.vue": [
-    "/build/assets/dialog-DANPXjKB.js"
-  ],
-  "resources/js/components/ui/dialog/DialogTitle.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/dialog-DANPXjKB.js"
-  ],
-  "resources/js/components/ui/dialog/DialogTrigger.vue": [
-    "/build/assets/dialog-DANPXjKB.js"
-  ],
-  "resources/js/components/ui/dialog/DialogTrigger.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/dialog-DANPXjKB.js"
-  ],
-  "resources/js/components/ui/dialog/index.ts": [
-    "/build/assets/dialog-DANPXjKB.js"
-  ],
+  "resources/js/components/ui/button/Button.vue": [],
+  "resources/js/components/ui/button/Button.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/button/index.ts": [],
+  "resources/js/components/ui/card/Card.vue": [],
+  "resources/js/components/ui/card/Card.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/card/CardAction.vue": [],
+  "resources/js/components/ui/card/CardAction.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/card/CardContent.vue": [],
+  "resources/js/components/ui/card/CardContent.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/card/CardDescription.vue": [],
+  "resources/js/components/ui/card/CardDescription.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/card/CardFooter.vue": [],
+  "resources/js/components/ui/card/CardFooter.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/card/CardHeader.vue": [],
+  "resources/js/components/ui/card/CardHeader.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/card/CardTitle.vue": [],
+  "resources/js/components/ui/card/CardTitle.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/card/index.ts": [],
+  "resources/js/components/ui/checkbox/Checkbox.vue": [],
+  "resources/js/components/ui/checkbox/Checkbox.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/checkbox/index.ts": [],
+  "resources/js/components/ui/dialog/Dialog.vue": [],
+  "resources/js/components/ui/dialog/Dialog.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/dialog/DialogClose.vue": [],
+  "resources/js/components/ui/dialog/DialogClose.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/dialog/DialogContent.vue": [],
+  "resources/js/components/ui/dialog/DialogContent.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/dialog/DialogDescription.vue": [],
+  "resources/js/components/ui/dialog/DialogDescription.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/dialog/DialogFooter.vue": [],
+  "resources/js/components/ui/dialog/DialogFooter.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/dialog/DialogHeader.vue": [],
+  "resources/js/components/ui/dialog/DialogHeader.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/dialog/DialogOverlay.vue": [],
+  "resources/js/components/ui/dialog/DialogOverlay.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/dialog/DialogScrollContent.vue": [],
+  "resources/js/components/ui/dialog/DialogScrollContent.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/dialog/DialogTitle.vue": [],
+  "resources/js/components/ui/dialog/DialogTitle.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/dialog/DialogTrigger.vue": [],
+  "resources/js/components/ui/dialog/DialogTrigger.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/dialog/index.ts": [],
   "resources/js/components/ui/dropdown-menu/DropdownMenu.vue": [],
   "resources/js/components/ui/dropdown-menu/DropdownMenu.vue?vue&type=script&setup=true&lang.ts": [],
   "resources/js/components/ui/dropdown-menu/DropdownMenuCheckboxItem.vue": [],
@@ -334,60 +159,64 @@
   "resources/js/components/ui/dropdown-menu/DropdownMenuTrigger.vue": [],
   "resources/js/components/ui/dropdown-menu/DropdownMenuTrigger.vue?vue&type=script&setup=true&lang.ts": [],
   "resources/js/components/ui/dropdown-menu/index.ts": [],
-  "resources/js/components/ui/input-otp/InputOTP.vue": [
-    "/build/assets/login-DvHbKI2G.js"
-  ],
-  "resources/js/components/ui/input-otp/InputOTP.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/login-DvHbKI2G.js"
-  ],
-  "resources/js/components/ui/input-otp/InputOTPGroup.vue": [
-    "/build/assets/login-DvHbKI2G.js"
-  ],
-  "resources/js/components/ui/input-otp/InputOTPGroup.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/login-DvHbKI2G.js"
-  ],
-  "resources/js/components/ui/input-otp/InputOTPSeparator.vue": [
-    "/build/assets/login-DvHbKI2G.js"
-  ],
-  "resources/js/components/ui/input-otp/InputOTPSeparator.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/login-DvHbKI2G.js"
-  ],
-  "resources/js/components/ui/input-otp/InputOTPSlot.vue": [
-    "/build/assets/login-DvHbKI2G.js"
-  ],
-  "resources/js/components/ui/input-otp/InputOTPSlot.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/login-DvHbKI2G.js"
-  ],
-  "resources/js/components/ui/input-otp/index.ts": [
-    "/build/assets/login-DvHbKI2G.js"
-  ],
-  "resources/js/components/ui/input/Input.vue": [
-    "/build/assets/input-DEmK1n7Q.js"
-  ],
-  "resources/js/components/ui/input/Input.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/input-DEmK1n7Q.js"
-  ],
-  "resources/js/components/ui/input/index.ts": [
-    "/build/assets/input-DEmK1n7Q.js"
-  ],
-  "resources/js/components/ui/label/Label.vue": [
-    "/build/assets/label-Fr_CsYDc.js"
-  ],
-  "resources/js/components/ui/label/Label.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/label-Fr_CsYDc.js"
-  ],
-  "resources/js/components/ui/label/index.ts": [
-    "/build/assets/label-Fr_CsYDc.js"
-  ],
-  "resources/js/components/ui/separator/Separator.vue": [
-    "/build/assets/separator-HaZ20jxp.js"
-  ],
-  "resources/js/components/ui/separator/Separator.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/separator-HaZ20jxp.js"
-  ],
-  "resources/js/components/ui/separator/index.ts": [
-    "/build/assets/separator-HaZ20jxp.js"
-  ],
+  "resources/js/components/ui/input-otp/InputOTP.vue": [],
+  "resources/js/components/ui/input-otp/InputOTP.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/input-otp/InputOTPGroup.vue": [],
+  "resources/js/components/ui/input-otp/InputOTPGroup.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/input-otp/InputOTPSeparator.vue": [],
+  "resources/js/components/ui/input-otp/InputOTPSeparator.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/input-otp/InputOTPSlot.vue": [],
+  "resources/js/components/ui/input-otp/InputOTPSlot.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/input-otp/index.ts": [],
+  "resources/js/components/ui/input/Input.vue": [],
+  "resources/js/components/ui/input/Input.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/input/index.ts": [],
+  "resources/js/components/ui/label/Label.vue": [],
+  "resources/js/components/ui/label/Label.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/label/index.ts": [],
+  "resources/js/components/ui/navigation-menu/NavigationMenu.vue": [],
+  "resources/js/components/ui/navigation-menu/NavigationMenu.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/navigation-menu/NavigationMenuContent.vue": [],
+  "resources/js/components/ui/navigation-menu/NavigationMenuContent.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/navigation-menu/NavigationMenuIndicator.vue": [],
+  "resources/js/components/ui/navigation-menu/NavigationMenuIndicator.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/navigation-menu/NavigationMenuItem.vue": [],
+  "resources/js/components/ui/navigation-menu/NavigationMenuItem.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/navigation-menu/NavigationMenuLink.vue": [],
+  "resources/js/components/ui/navigation-menu/NavigationMenuLink.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/navigation-menu/NavigationMenuList.vue": [],
+  "resources/js/components/ui/navigation-menu/NavigationMenuList.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/navigation-menu/NavigationMenuTrigger.vue": [],
+  "resources/js/components/ui/navigation-menu/NavigationMenuTrigger.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/navigation-menu/NavigationMenuViewport.vue": [],
+  "resources/js/components/ui/navigation-menu/NavigationMenuViewport.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/navigation-menu/index.ts": [],
+  "resources/js/components/ui/select/Select.vue": [],
+  "resources/js/components/ui/select/Select.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/select/SelectContent.vue": [],
+  "resources/js/components/ui/select/SelectContent.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/select/SelectGroup.vue": [],
+  "resources/js/components/ui/select/SelectGroup.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/select/SelectItem.vue": [],
+  "resources/js/components/ui/select/SelectItem.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/select/SelectItemText.vue": [],
+  "resources/js/components/ui/select/SelectItemText.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/select/SelectLabel.vue": [],
+  "resources/js/components/ui/select/SelectLabel.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/select/SelectScrollDownButton.vue": [],
+  "resources/js/components/ui/select/SelectScrollDownButton.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/select/SelectScrollUpButton.vue": [],
+  "resources/js/components/ui/select/SelectScrollUpButton.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/select/SelectSeparator.vue": [],
+  "resources/js/components/ui/select/SelectSeparator.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/select/SelectTrigger.vue": [],
+  "resources/js/components/ui/select/SelectTrigger.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/select/SelectValue.vue": [],
+  "resources/js/components/ui/select/SelectValue.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/select/index.ts": [],
+  "resources/js/components/ui/separator/Separator.vue": [],
+  "resources/js/components/ui/separator/Separator.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/separator/index.ts": [],
   "resources/js/components/ui/sheet/Sheet.vue": [],
   "resources/js/components/ui/sheet/Sheet.vue?vue&type=script&setup=true&lang.ts": [],
   "resources/js/components/ui/sheet/SheetClose.vue": [],
@@ -463,15 +292,34 @@
   "resources/js/components/ui/sonner/Sonner.vue": [],
   "resources/js/components/ui/sonner/Sonner.vue?vue&type=script&setup=true&lang.ts": [],
   "resources/js/components/ui/sonner/index.ts": [],
-  "resources/js/components/ui/spinner/Spinner.vue": [
-    "/build/assets/spinner-ntep3OqV.js"
-  ],
-  "resources/js/components/ui/spinner/Spinner.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/spinner-ntep3OqV.js"
-  ],
-  "resources/js/components/ui/spinner/index.ts": [
-    "/build/assets/spinner-ntep3OqV.js"
-  ],
+  "resources/js/components/ui/spinner/Spinner.vue": [],
+  "resources/js/components/ui/spinner/Spinner.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/spinner/index.ts": [],
+  "resources/js/components/ui/switch/Switch.vue": [],
+  "resources/js/components/ui/switch/Switch.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/switch/index.ts": [],
+  "resources/js/components/ui/table/Table.vue": [],
+  "resources/js/components/ui/table/Table.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/table/TableBody.vue": [],
+  "resources/js/components/ui/table/TableBody.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/table/TableCell.vue": [],
+  "resources/js/components/ui/table/TableCell.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/table/TableHead.vue": [],
+  "resources/js/components/ui/table/TableHead.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/table/TableHeader.vue": [],
+  "resources/js/components/ui/table/TableHeader.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/table/TableRow.vue": [],
+  "resources/js/components/ui/table/TableRow.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/table/index.ts": [],
+  "resources/js/components/ui/tabs/Tabs.vue": [],
+  "resources/js/components/ui/tabs/Tabs.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/tabs/TabsContent.vue": [],
+  "resources/js/components/ui/tabs/TabsContent.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/tabs/TabsList.vue": [],
+  "resources/js/components/ui/tabs/TabsList.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/tabs/TabsTrigger.vue": [],
+  "resources/js/components/ui/tabs/TabsTrigger.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/components/ui/tabs/index.ts": [],
   "resources/js/components/ui/tooltip/Tooltip.vue": [],
   "resources/js/components/ui/tooltip/Tooltip.vue?vue&type=script&setup=true&lang.ts": [],
   "resources/js/components/ui/tooltip/TooltipContent.vue": [],
@@ -481,143 +329,101 @@
   "resources/js/components/ui/tooltip/TooltipTrigger.vue": [],
   "resources/js/components/ui/tooltip/TooltipTrigger.vue?vue&type=script&setup=true&lang.ts": [],
   "resources/js/components/ui/tooltip/index.ts": [],
-  "resources/js/composables/useAppearance.ts": [
-    "/build/assets/useAppearance-DAHt6sku.js"
-  ],
+  "resources/js/composables/useAppearance.ts": [],
+  "resources/js/composables/useClipboard.ts": [],
   "resources/js/composables/useCurrentUrl.ts": [],
   "resources/js/composables/useInitials.ts": [],
-  "resources/js/composables/useTwoFactorAuth.ts": [
-    "/build/assets/Security-v1BsDBGK.js"
-  ],
+  "resources/js/composables/useTwoFactorAuth.ts": [],
   "resources/js/layouts/AppLayout.vue": [],
   "resources/js/layouts/AppLayout.vue?vue&type=script&setup=true&lang.ts": [],
   "resources/js/layouts/AuthLayout.vue": [],
   "resources/js/layouts/AuthLayout.vue?vue&type=script&setup=true&lang.ts": [],
-  "resources/js/layouts/app/AppSidebarLayout.vue": [],
-  "resources/js/layouts/app/AppSidebarLayout.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/layouts/app/AppHeaderLayout.vue": [],
+  "resources/js/layouts/app/AppHeaderLayout.vue?vue&type=script&setup=true&lang.ts": [],
   "resources/js/layouts/auth/AuthSimpleLayout.vue": [],
   "resources/js/layouts/auth/AuthSimpleLayout.vue?vue&type=script&setup=true&lang.ts": [],
   "resources/js/layouts/settings/Layout.vue": [],
   "resources/js/layouts/settings/Layout.vue?vue&type=script&setup=true&lang.ts": [],
-  "resources/js/lib/flashToast.ts": [],
-  "resources/js/lib/utils.ts": [
-    "/build/assets/button-DHJnCoso.js"
-  ],
-  "resources/js/pages/Dashboard.vue": [
-    "/build/assets/Dashboard-D3t9VLMO.js"
-  ],
-  "resources/js/pages/Dashboard.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/Dashboard-D3t9VLMO.js"
-  ],
-  "resources/js/pages/Welcome.vue": [
-    "/build/assets/Welcome-BUhrzkgl.js"
-  ],
-  "resources/js/pages/Welcome.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/Welcome-BUhrzkgl.js"
-  ],
-  "resources/js/pages/auth/ConfirmPassword.vue": [
-    "/build/assets/ConfirmPassword-C6uijzza.js"
-  ],
-  "resources/js/pages/auth/ConfirmPassword.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/ConfirmPassword-C6uijzza.js"
-  ],
-  "resources/js/pages/auth/ForgotPassword.vue": [
-    "/build/assets/ForgotPassword-NvExggKh.js"
-  ],
-  "resources/js/pages/auth/ForgotPassword.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/ForgotPassword-NvExggKh.js"
-  ],
-  "resources/js/pages/auth/Login.vue": [
-    "/build/assets/Login-BXTbSPJy.js"
-  ],
-  "resources/js/pages/auth/Login.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/Login-BXTbSPJy.js"
-  ],
-  "resources/js/pages/auth/Register.vue": [
-    "/build/assets/Register-CS-3FADm.js"
-  ],
-  "resources/js/pages/auth/Register.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/Register-CS-3FADm.js"
-  ],
-  "resources/js/pages/auth/ResetPassword.vue": [
-    "/build/assets/ResetPassword-C0OPD0aT.js"
-  ],
-  "resources/js/pages/auth/ResetPassword.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/ResetPassword-C0OPD0aT.js"
-  ],
-  "resources/js/pages/auth/TwoFactorChallenge.vue": [
-    "/build/assets/TwoFactorChallenge-C3CF9DoG.js"
-  ],
-  "resources/js/pages/auth/TwoFactorChallenge.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/TwoFactorChallenge-C3CF9DoG.js"
-  ],
-  "resources/js/pages/auth/VerifyEmail.vue": [
-    "/build/assets/VerifyEmail-BhZXhkP6.js"
-  ],
-  "resources/js/pages/auth/VerifyEmail.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/VerifyEmail-BhZXhkP6.js"
-  ],
-  "resources/js/pages/servers/Index.vue": [
-    "/build/assets/Index-PGlzILeE.js"
-  ],
-  "resources/js/pages/servers/Index.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/Index-PGlzILeE.js"
-  ],
-  "resources/js/pages/settings/Appearance.vue": [
-    "/build/assets/Appearance-UvhpP3sW.js"
-  ],
-  "resources/js/pages/settings/Appearance.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/Appearance-UvhpP3sW.js"
-  ],
-  "resources/js/pages/settings/Profile.vue": [
-    "/build/assets/Profile-BHCwBBTX.js"
-  ],
-  "resources/js/pages/settings/Profile.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/Profile-BHCwBBTX.js"
-  ],
-  "resources/js/pages/settings/Security.vue": [
-    "/build/assets/Security-v1BsDBGK.js"
-  ],
-  "resources/js/pages/settings/Security.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/Security-v1BsDBGK.js"
-  ],
-  "resources/js/routes/appearance/index.ts": [
-    "/build/assets/appearance-C9XoGQxF.js"
-  ],
-  "resources/js/routes/index.ts": [
-    "/build/assets/routes-DSDfhJr3.js"
-  ],
-  "resources/js/routes/login/index.ts": [
-    "/build/assets/Login-BXTbSPJy.js"
-  ],
-  "resources/js/routes/password/confirm/index.ts": [
-    "/build/assets/confirm-Bb-3GoYL.js"
-  ],
-  "resources/js/routes/password/index.ts": [
-    "/build/assets/password-DZxdSfmm.js"
-  ],
-  "resources/js/routes/profile/index.ts": [
-    "/build/assets/profile-C0rmUldE.js"
-  ],
-  "resources/js/routes/register/index.ts": [
-    "/build/assets/Register-CS-3FADm.js"
-  ],
-  "resources/js/routes/security/index.ts": [
-    "/build/assets/security-C4aqlBsk.js"
-  ],
-  "resources/js/routes/servers/index.ts": [
-    "/build/assets/Index-PGlzILeE.js"
-  ],
-  "resources/js/routes/two-factor/index.ts": [
-    "/build/assets/Security-v1BsDBGK.js"
-  ],
-  "resources/js/routes/two-factor/login/index.ts": [
-    "/build/assets/login-DvHbKI2G.js"
-  ],
-  "resources/js/routes/verification/index.ts": [
-    "/build/assets/verification-B4VXILzx.js"
-  ],
-  "resources/js/wayfinder/index.ts": [
-    "/build/assets/wayfinder-BrhwLpUM.js"
-  ]
+  "resources/js/lib/utils.ts": [],
+  "resources/js/pages/Dashboard.vue": [],
+  "resources/js/pages/Dashboard.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/pages/Welcome.vue": [],
+  "resources/js/pages/Welcome.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/pages/auth/ConfirmPassword.vue": [],
+  "resources/js/pages/auth/ConfirmPassword.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/pages/auth/ForgotPassword.vue": [],
+  "resources/js/pages/auth/ForgotPassword.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/pages/auth/Login.vue": [],
+  "resources/js/pages/auth/Login.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/pages/auth/Register.vue": [],
+  "resources/js/pages/auth/Register.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/pages/auth/ResetPassword.vue": [],
+  "resources/js/pages/auth/ResetPassword.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/pages/auth/TwoFactorChallenge.vue": [],
+  "resources/js/pages/auth/TwoFactorChallenge.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/pages/auth/VerifyEmail.vue": [],
+  "resources/js/pages/auth/VerifyEmail.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/pages/backups/Index.vue": [],
+  "resources/js/pages/backups/Index.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/pages/cron/Index.vue": [],
+  "resources/js/pages/cron/Index.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/pages/databases/Create.vue": [],
+  "resources/js/pages/databases/Create.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/pages/databases/Index.vue": [],
+  "resources/js/pages/databases/Index.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/pages/firewall/Index.vue": [],
+  "resources/js/pages/firewall/Index.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/pages/servers/Create.vue": [],
+  "resources/js/pages/servers/Create.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/pages/servers/Index.vue": [],
+  "resources/js/pages/servers/Index.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/pages/servers/Monitoring.vue": [],
+  "resources/js/pages/servers/Monitoring.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/pages/servers/Provisioning.vue": [],
+  "resources/js/pages/servers/Provisioning.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/pages/servers/Settings.vue": [],
+  "resources/js/pages/servers/Settings.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/pages/servers/Show.vue": [],
+  "resources/js/pages/servers/Show.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/pages/settings/Appearance.vue": [],
+  "resources/js/pages/settings/Appearance.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/pages/settings/Profile.vue": [],
+  "resources/js/pages/settings/Profile.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/pages/settings/Security.vue": [],
+  "resources/js/pages/settings/Security.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/pages/webapps/Create.vue": [],
+  "resources/js/pages/webapps/Create.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/pages/webapps/Env.vue": [],
+  "resources/js/pages/webapps/Env.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/pages/webapps/Git.vue": [],
+  "resources/js/pages/webapps/Git.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/pages/webapps/Index.vue": [],
+  "resources/js/pages/webapps/Index.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/pages/webapps/Settings.vue": [],
+  "resources/js/pages/webapps/Settings.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/pages/webapps/Show.vue": [],
+  "resources/js/pages/webapps/Show.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/pages/webapps/Ssl.vue": [],
+  "resources/js/pages/webapps/Ssl.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/routes/appearance/index.ts": [],
+  "resources/js/routes/backups/index.ts": [],
+  "resources/js/routes/cron-jobs/index.ts": [],
+  "resources/js/routes/databases/index.ts": [],
+  "resources/js/routes/firewall/index.ts": [],
+  "resources/js/routes/index.ts": [],
+  "resources/js/routes/login/index.ts": [],
+  "resources/js/routes/oauth/index.ts": [],
+  "resources/js/routes/password/confirm/index.ts": [],
+  "resources/js/routes/password/index.ts": [],
+  "resources/js/routes/profile/index.ts": [],
+  "resources/js/routes/register/index.ts": [],
+  "resources/js/routes/security/index.ts": [],
+  "resources/js/routes/servers/index.ts": [],
+  "resources/js/routes/servers/services/index.ts": [],
+  "resources/js/routes/two-factor/index.ts": [],
+  "resources/js/routes/two-factor/login/index.ts": [],
+  "resources/js/routes/verification/index.ts": [],
+  "resources/js/routes/web-apps/index.ts": [],
+  "resources/js/ssr.ts": [],
+  "resources/js/wayfinder/index.ts": []
 }

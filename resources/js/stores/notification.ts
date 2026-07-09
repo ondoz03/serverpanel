@@ -9,11 +9,6 @@ interface Notification {
     created_at: string;
 }
 
-interface NotificationState {
-    notifications: Notification[];
-    unreadCount: number;
-}
-
 export const useNotificationStore = defineStore('notification', () => {
     const notifications = ref<Notification[]>([
         {
@@ -54,6 +49,7 @@ export const useNotificationStore = defineStore('notification', () => {
 
     function markRead(id: string): void {
         const notif = notifications.value.find((n) => n.id === id);
+
         if (notif) {
             notif.read = true;
         }

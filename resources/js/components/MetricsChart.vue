@@ -30,15 +30,16 @@ const points = computed(() =>
     .map((v, i) => {
       const x = pad.left + (i / Math.max(props.data.length - 1, 1)) * innerW
       const y = pad.top + innerH - ((v - minVal.value) / range.value) * innerH
+
       return `${x},${y}`
     })
     .join(' '),
 )
 
 const fillPoints = computed(() => {
-  const lastIdx = props.data.length - 1
   const right = pad.left + innerW
   const bottom = pad.top + innerH
+
   return `${points.value} ${right},${bottom} ${pad.left},${bottom}`
 })
 
@@ -48,6 +49,7 @@ function onMouseMove(e: MouseEvent) {
   const mx = e.clientX - rect.left
   const ratio = mx / rect.width
   const idx = Math.round(ratio * (props.data.length - 1))
+
   if (idx >= 0 && idx < props.data.length) {
     tooltip.value = { x: mx, value: props.data[idx] }
   }

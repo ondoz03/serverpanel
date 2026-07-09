@@ -38,7 +38,11 @@ const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Fri
 
 const description = computed(() => {
   const parts = props.modelValue.trim().split(/\s+/)
-  if (parts.length !== 5) return "Invalid cron expression"
+
+  if (parts.length !== 5) {
+return "Invalid cron expression"
+}
+
   const [minute, hour, dayOfMonth, month, dayOfWeek] = parts
 
   if (minute === "*" && hour === "*" && dayOfMonth === "*" && month === "*" && dayOfWeek === "*") {
@@ -57,6 +61,7 @@ const description = computed(() => {
     const h = Number.parseInt(hour)
     const period = h >= 12 ? "PM" : "AM"
     const displayHour = h === 0 ? 12 : h > 12 ? h - 12 : h
+
     return `At ${displayHour}:00 ${period} daily`
   }
 
@@ -71,6 +76,7 @@ const description = computed(() => {
   if (minute === "0" && hour === "0" && dayOfMonth === "*" && month === "*" && dayOfWeek !== "*") {
     const dw = Number.parseInt(dayOfWeek)
     const dayName = daysOfWeek[dw] ?? `day ${dw}`
+
     return `At 12:00 AM on ${dayName}`
   }
 

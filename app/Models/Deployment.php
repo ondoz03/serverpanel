@@ -36,7 +36,7 @@ class Deployment extends Model
 
     public function webApplication(): BelongsTo
     {
-        return $this->belongsTo(WebApplication::class);
+        return $this->belongsTo(WebApplication::class, 'web_app_id');
     }
 
     public function gitDeployment(): BelongsTo

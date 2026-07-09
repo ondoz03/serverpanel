@@ -1,15 +1,5 @@
 <script setup lang="ts">
 import { Head, Link } from '@inertiajs/vue3';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardHeader,
-    CardTitle,
-} from '@/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
     ArrowLeft,
     Globe,
@@ -24,6 +14,19 @@ import {
     RefreshCw,
     Zap,
 } from '@lucide/vue';
+import { ref, computed } from 'vue';
+import { toast } from 'vue-sonner';
+import TerminalOutput from '@/components/TerminalOutput.vue';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardHeader,
+    CardTitle,
+} from '@/components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import type { WebApplication } from '@/types';
 
 defineOptions({
@@ -35,9 +38,6 @@ defineOptions({
     },
 });
 
-import { ref, computed } from 'vue';
-import { toast } from 'vue-sonner';
-import TerminalOutput from '@/components/TerminalOutput.vue';
 
 const props = defineProps<{
     app: WebApplication;
@@ -47,9 +47,11 @@ const app = computed(() => {
     if (String(props.app.id).startsWith('local-')) {
         try {
             const local = localStorage.getItem('local_webapps');
+
             if (local) {
                 const parsed = JSON.parse(local) as WebApplication[];
                 const found = parsed.find(a => String(a.id) === String(props.app.id));
+
                 if (found) {
                     return { ...props.app, ...found };
                 }
@@ -58,14 +60,21 @@ const app = computed(() => {
             console.error('Failed to load local webapp in details', e);
         }
     }
+
     return props.app;
 });
 
 function statusVariant(
     status: string,
 ): 'default' | 'destructive' | 'secondary' {
-    if (status === 'active') return 'default';
-    if (status === 'suspended') return 'destructive';
+    if (status === 'active') {
+return 'default';
+}
+
+    if (status === 'suspended') {
+return 'destructive';
+}
+
     return 'secondary';
 }
 
@@ -152,7 +161,10 @@ const commandTemplates: Record<string, string[]> = {
 };
 
 function runArtisan() {
-    if (isCommandRunning.value) return;
+    if (isCommandRunning.value) {
+return;
+}
+
     isCommandRunning.value = true;
     commandLines.value = [];
 
@@ -207,7 +219,10 @@ function quickClearCache(type: string) {
 
 function toggleWorker(workerId: number) {
     const worker = queueWorkers.value.find((w) => w.id === workerId);
-    if (!worker) return;
+
+    if (!worker) {
+return;
+}
 
     worker.status = worker.status === 'running' ? 'stopped' : 'running';
     toast.success(
@@ -217,9 +232,11 @@ function toggleWorker(workerId: number) {
 
 function restartWorker(workerId: number) {
     const worker = queueWorkers.value.find((w) => w.id === workerId);
-    if (!worker) return;
 
-    const originalStatus = worker.status;
+    if (!worker) {
+return;
+}
+
     worker.status = 'restarting';
 
     setTimeout(() => {

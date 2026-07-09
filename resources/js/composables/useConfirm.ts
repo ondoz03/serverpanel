@@ -1,15 +1,8 @@
 import { ref } from 'vue';
 
-interface ConfirmOptions {
-    title?: string;
-    description?: string;
-    confirmText?: string;
-    cancelText?: string;
-    variant?: 'destructive' | 'default';
-}
 
 interface UseConfirmReturn {
-    confirm: (options?: ConfirmOptions) => Promise<boolean>;
+    confirm: () => Promise<boolean>;
     resolve: (value: boolean) => void;
     open: ReturnType<typeof ref<boolean>>;
     onConfirm: ReturnType<typeof ref<(() => void) | null>>;
@@ -23,7 +16,7 @@ export function useConfirm(): UseConfirmReturn {
 
     let resolvePromise: ((value: boolean) => void) | null = null;
 
-    function confirm(options?: ConfirmOptions): Promise<boolean> {
+    function confirm(): Promise<boolean> {
         open.value = true;
 
         return new Promise((resolve) => {
@@ -46,6 +39,7 @@ export function useConfirm(): UseConfirmReturn {
             resolvePromise(value);
             resolvePromise = null;
         }
+
         open.value = false;
     }
 

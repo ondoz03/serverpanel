@@ -33,6 +33,7 @@ function humanizeSchedule(schedule: string): string {
     '@yearly': 'Yearly',
     '@reboot': 'On reboot',
   }
+
   return map[schedule] || schedule
 }
 </script>

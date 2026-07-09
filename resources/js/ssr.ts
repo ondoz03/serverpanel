@@ -1,0 +1,45 @@
+import { createInertiaApp } from '@inertiajs/vue3';
+import createServer from '@inertiajs/vue3/server';
+import { renderToString } from '@vue/server-renderer';
+import { createPinia } from 'pinia';
+import { createSSRApp, h } from 'vue';
+import AppLayout from '@/layouts/AppLayout.vue';
+import AuthLayout from '@/layouts/AuthLayout.vue';
+import SettingsLayout from '@/layouts/settings/Layout.vue';
+
+const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
+
+createServer((page) =>
+    createInertiaApp({
+        page,
+        render: renderToString,
+        resolve: (name) => {
+            const pages = import.meta.glob('./pages/**/*.vue', { eager: true });
+            const page = pages[`./pages/${name}.vue`];
+
+            if (!page) {
+throw new Error(`Page not found: ${name}`);
+}
+
+            return page as any;
+        },
+        setup({ App, props, plugin }) {
+            return createSSRApp({ render: () => h(App, props) })
+                .use(plugin)
+                .use(createPinia());
+        },
+        title: (title) => (title ? `${title} - ${appName}` : appName),
+        layout: (name) => {
+            switch (true) {
+                case name === 'Welcome':
+                    return null;
+                case name.startsWith('auth/'):
+                    return AuthLayout;
+                case name.startsWith('settings/'):
+                    return [AppLayout, SettingsLayout];
+                default:
+                    return AppLayout;
+            }
+        },
+    }),
+);

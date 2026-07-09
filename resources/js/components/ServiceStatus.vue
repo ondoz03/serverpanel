@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import StatusBadge from '@/components/StatusBadge.vue'
 import { Server, Activity, Cpu } from '@lucide/vue'
+import StatusBadge from '@/components/StatusBadge.vue'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
 interface ServiceItem {
   name: string

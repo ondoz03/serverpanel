@@ -72,6 +72,7 @@ class ServerService
             'databases_count' => $server->databases()->count(),
             'firewall_rules_count' => $server->firewallRules()->count(),
             'cron_jobs_count' => $server->cronJobs()->count(),
+            'agent_token' => $server->agent_token,
         ];
     }
 
@@ -174,6 +175,7 @@ class ServerService
             'provider' => $data['provider'] ?? 'custom',
             'datacenter' => $data['datacenter'] ?? null,
             'status' => 'pending',
+            'agent_token' => 'sp_live_' . bin2hex(random_bytes(28)),
         ]);
     }
 

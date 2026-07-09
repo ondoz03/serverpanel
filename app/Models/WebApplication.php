@@ -53,11 +53,11 @@ class WebApplication extends Model
 
     public function gitDeployment(): HasMany
     {
-        return $this->hasMany(GitDeployment::class);
+        return $this->hasMany(GitDeployment::class, 'web_app_id');
     }
 
     public function deployments(): HasMany
     {
-        return $this->hasMany(Deployment::class);
+        return $this->hasMany(Deployment::class, 'web_app_id');
     }
 }

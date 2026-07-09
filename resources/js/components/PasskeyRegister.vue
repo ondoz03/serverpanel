@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { usePasskeyRegister } from '@laravel/passkeys/vue';
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import InputError from '@/components/InputError.vue';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -11,6 +11,10 @@ const emit = defineEmits<{
 }>();
 
 const getDefaultPasskeyName = () => {
+    if (typeof navigator === 'undefined') {
+        return '';
+    }
+
     const ua = navigator.userAgent;
 
     const browser = [
@@ -32,8 +36,12 @@ const getDefaultPasskeyName = () => {
     return [browser, os].filter(Boolean).join(' on ') || '';
 };
 
-const name = ref(getDefaultPasskeyName());
+const name = ref('');
 const showForm = ref(false);
+
+onMounted(() => {
+    name.value = getDefaultPasskeyName();
+});
 
 const { register, isLoading, error, isSupported } = usePasskeyRegister({
     onSuccess: () => {

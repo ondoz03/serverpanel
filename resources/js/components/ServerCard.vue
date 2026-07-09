@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { Card, CardContent } from '@/components/ui/card'
-import StatusBadge from '@/components/StatusBadge.vue'
 import { Monitor, HardDrive, Wifi } from '@lucide/vue'
+import StatusBadge from '@/components/StatusBadge.vue'
+import { Card, CardContent } from '@/components/ui/card'
 
 interface Server {
   id: string | number

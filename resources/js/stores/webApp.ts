@@ -9,12 +9,6 @@ interface WebApp {
     status: string;
 }
 
-interface WebAppState {
-    apps: WebApp[];
-    currentApp: WebApp | null;
-    loading: boolean;
-}
-
 export const useWebAppStore = defineStore('webApp', () => {
     const apps = ref<WebApp[]>([]);
     const currentApp = ref<WebApp | null>(null);

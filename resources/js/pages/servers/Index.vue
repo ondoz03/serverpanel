@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { Head, Link } from '@inertiajs/vue3';
 import { Activity, Circle, HardDrive, MemoryStick, Network, Plus, Server as ServerIcon } from '@lucide/vue';
-import serversRoute from '@/routes/servers';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import serversRoute from '@/routes/servers';
 import type { Server } from '@/types';
 
 defineOptions({
@@ -13,19 +13,24 @@ defineOptions({
     },
 });
 
-const props = defineProps<{
+defineProps<{
     servers: Server[];
 }>();
 
 function formatBytes(bytes: number): string {
     const gb = bytes / (1024 * 1024 * 1024);
+
     return `${gb.toFixed(1)} GB`;
 }
 
 function formatUptime(seconds: number): string {
     const days = Math.floor(seconds / 86400);
     const hours = Math.floor((seconds % 86400) / 3600);
-    if (days > 0) return `${days}d ${hours}h`;
+
+    if (days > 0) {
+return `${days}d ${hours}h`;
+}
+
     return `${hours}h`;
 }
 
@@ -39,8 +44,14 @@ function statusVariant(status: string): 'success' | 'warning' | 'destructive' | 
 }
 
 function usageColor(percent: number): string {
-    if (percent > 90) return 'bg-red-500';
-    if (percent > 70) return 'bg-yellow-500';
+    if (percent > 90) {
+return 'bg-red-500';
+}
+
+    if (percent > 70) {
+return 'bg-yellow-500';
+}
+
     return 'bg-green-500';
 }
 </script>

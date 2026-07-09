@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { Input } from '@/components/ui/input'
+import { Eye, EyeOff, Plus, Trash2, GripVertical } from '@lucide/vue'
 import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
 import {
   Table,
   TableHeader,
@@ -9,7 +10,6 @@ import {
   TableHead,
   TableCell,
 } from '@/components/ui/table'
-import { Eye, EyeOff, Plus, Trash2, GripVertical } from '@lucide/vue'
 
 interface EnvVariable {
   key: string
